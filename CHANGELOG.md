@@ -1,3 +1,16 @@
+# 1.0.0-develop.1 (2021-10-28)
+
+
+### Bug Fixes
+
+* Minor package and readme changes ([521f2f5](https://github.com/PSW-Organization-8/hospital-information-system/commit/521f2f5fe66cc271c07a9e1a8e4fc59a2611a0b5))
+
+
+### Features
+
+* Initial backend solution setup ([b1274d9](https://github.com/PSW-Organization-8/hospital-information-system/commit/b1274d9549b57539e570e69b1fb59d64ef4d0332))
+* Project semantic versioning setup ([fa1752d](https://github.com/PSW-Organization-8/hospital-information-system/commit/fa1752d5c2dff83d38dc6caf2f88dfcd0c341773))
+
 ## [1.0.2](https://github.com/tara-pogancev/psw-hostpital-system/compare/v1.0.1...v1.0.2) (2021-10-27)
 
 
