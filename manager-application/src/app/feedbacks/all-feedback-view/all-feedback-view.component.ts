@@ -22,7 +22,10 @@ export class AllFeedbackViewComponent implements OnInit {
   }
 
   aprroveFeedback(feedbackId: string): void {
-    this._allFeedbackViewService.approveFeedback(feedbackId).subscribe();
+    this._allFeedbackViewService.approveFeedback(feedbackId).subscribe(() => this.getAllFeedbacks());
   }
 
+  removeFeedback(feedbackId: string): void {
+    this._allFeedbackViewService.removeFeedback(feedbackId).subscribe(() => this.getAllFeedbacks());
+  }
 }

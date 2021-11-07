@@ -1,14 +1,17 @@
-﻿using HospitalClassLib.Feedbacks.Model;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HospitalClassLib.Feedbacks.Service;
 using HospitalAPI.Dto;
 using HospitalAPI.Mapper;
 using System.Collections.ObjectModel;
+using HospitalClassLib.Schedule.Model;
+using HospitalClassLib.Schedule.Repository.FeedbackRepository;
+using HospitalClassLib.Schedule.Service;
+using HospitalAPI.Validators;
+using FluentValidation.Results;
 
 namespace HospitalAPI.Controllers
 {
@@ -16,32 +19,61 @@ namespace HospitalAPI.Controllers
     [Route("api/[controller]")]
     public class FeedbackController : ControllerBase
     {
-        private readonly ILogger<FeedbackController> _logger;
-        public FeedbackController(ILogger<FeedbackController> logger)
+        private readonly FeedbackService feedbackService;
+        private readonly FeedbackRepository feedbackRepository;
+        private readonly FeedbackValidator validator;
+
+        public FeedbackController(FeedbackService feedbackService, FeedbackRepository feedbackRepository)
         {
-            _logger = logger;
-        }
-        [HttpGet]
-        public ObservableCollection<Feedback> GetAll()
-        {
-            return FeedbackService.GetInstance().GetAll();
-        }
-        [HttpPost]
-        public Feedback Add(FeedbackDto feedbackDto)
-        {   
-            return FeedbackService.GetInstance().Add(FeedbackMapper.FeedbackDtoToFeedback(feedbackDto));
-        }
-        [HttpPut("{id}")]
-        public void ApproveFeedback(string id)
-        {
-            FeedbackService.GetInstance().ApproveFeedback(id);
+            this.feedbackService = feedbackService;
+            this.feedbackRepository = feedbackRepository;
+            this.validator = new FeedbackValidator();
         }
 
         [HttpGet]
         [Route("approved")]
-        public ObservableCollection<Feedback> GetApprovedFeedbacks() 
+        public IActionResult GetApprovedFeedbacks() 
         {
-            return FeedbackService.GetInstance().GetApprovedFeedbacks();
+            return Ok(feedbackRepository.GetApproved());
+        }
+
+        [HttpGet]
+        public List<Feedback> GetFeedbacks()
+        {
+            return feedbackService.GetAll();
+        }
+
+        [HttpGet("{id?}")]
+        public IActionResult GetFeedback(int id)
+        {
+            return Ok(feedbackService.Get(id));
+        }
+
+        [HttpPost]
+        public IActionResult AddFeedback(FeedbackDto feedbackDto)
+        {
+            if (validator.Validate(feedbackDto).IsValid)
+                return Ok(feedbackService.Create(FeedbackMapper.FeedbackDtoToFeedback(feedbackDto)));
+            else
+                return BadRequest();
+        }
+
+        [HttpDelete("{id?}")]
+        public IActionResult DeleteFeedback(int id)
+        {
+            return Ok(feedbackService.Delete(id));
+        }
+
+        [HttpPut("{id}")]
+        public void ApproveFeedback(int id)
+        {
+            feedbackService.ApproveFeedback(id);
+        }
+
+        [HttpPut("remove/{id}")]
+        public void RemoveFeedback(int id)
+        {
+            feedbackService.RemoveFeedback(id);
         }
     }
 }
