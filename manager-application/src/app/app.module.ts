@@ -13,11 +13,15 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'feedbackview', component: AllFeedbackViewComponent },
   { path: 'pharmacyRegistration', component: PharmacyRegistrationComponent },
+  { path: 'header', component: HeaderComponent }
 ];
 
 @NgModule({
@@ -26,6 +30,8 @@ const routes: Routes = [
     AppComponent,
     AllFeedbackViewComponent,
     PharmacyRegistrationComponent,
+    HeaderComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
