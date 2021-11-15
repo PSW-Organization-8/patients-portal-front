@@ -10,13 +10,15 @@ import { RandomNumberGeneratorService } from './services/feedback.service';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { PatientRecordComponent } from './patient-record/patient-record.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FeedbackComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    PatientRecordComponent
   ],
   imports: [
     BrowserModule,
