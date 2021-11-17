@@ -1,0 +1,78 @@
+<div class="column is-half spacing-left">
+    <h1>NASLOV</h1>
+    
+    
+    <div class="card spacing-down "  *ngFor="let surv of surveys">
+
+        <div *ngIf="surv.enum === 1">
+            uopa
+        </div>
+        <hr><br><br><br><br>
+
+
+        <div class="card-content level padding-left">
+          <p class="title ">
+            {{surv.name}}
+          </p>
+
+          <div class="rate" id="pitanje{{surv.id}}">
+            <input type="radio" id="{{surv.id}}star1" name="pitanje{{surv.id}}" value="1" />
+            <label for="{{surv.id}}star1" title="text">1 star</label>
+            <input type="radio" id="{{surv.id}}star2" name="pitanje{{surv.id}}" value="2" />
+            <label for="{{surv.id}}star2" title="text">2 stars</label>
+            <input type="radio" id="{{surv.id}}star3" name="pitanje{{surv.id}}" value="3" />
+            <label for="{{surv.id}}star3" title="text">3 stars</label>
+            <input type="radio" id="{{surv.id}}star4" name="pitanje{{surv.id}}" value="4" />
+            <label for="{{surv.id}}star4" title="text">4 stars</label>
+            <input type="radio" id="{{surv.id}}star5" name="pitanje{{surv.id}}" value="5" />
+            <label for="{{surv.id}}star5" title="text">5 stars</label>
+          </div>
+
+
+
+        </div>
+        <footer class="card-footer">
+            <div class="card-footer-item ">
+
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="foobar">
+                  1
+                </label>
+                <label class="radio">
+                  <input type="radio" name="foobar" checked>
+                  2
+                </label>
+                <label class="radio">
+                  <input type="radio" name="foobar" checked>
+                  3
+                </label>
+                <label class="radio">
+                  <input type="radio" name="foobar" checked>
+                  4
+                </label>
+                <label class="radio">
+                  <input type="radio" name="foobar" checked>
+                  5
+                </label>
+              </div>
+
+
+              <div class="clasificacion">
+                <input id="radio1" type="radio" name="estrellas" value="5">
+               <label for="radio1">&#9733;</label>
+               <input id="radio2" type="radio" name="estrellas" value="4">
+               <label for="radio2">&#9733;</label>
+               <input id="radio3" type="radio" name="estrellas" value="3">
+               <label for="radio3">&#9733;</label>
+               <input id="radio4" type="radio" name="estrellas" value="2">
+               <label for="radio4">&#9733;</label>
+               <input id="radio5" type="radio" name="estrellas" value="1">
+               <label for="radio5">&#9733;</label>
+              </div>
+
+            </div>
+        </footer>
+      </div>
+      
+</div>
