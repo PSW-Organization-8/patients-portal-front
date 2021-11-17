@@ -16,15 +16,15 @@
           </p>
 
           <div class="rate" id="pitanje{{surv.id}}">
-            <input type="radio" id="{{surv.id}}star1" name="pitanje{{surv.id}}" value="1"  (click)="rateIt(1, surv)"/>
+            <input type="radio" id="{{surv.id}}star1" name="pitanje{{surv.id}}" value="5"  (click)="rateIt(5, surv)"/>
             <label for="{{surv.id}}star1" title="text">1 star</label>
-            <input type="radio" id="{{surv.id}}star2" name="pitanje{{surv.id}}" value="2" (click)="rateIt(2, surv)"/>
+            <input type="radio" id="{{surv.id}}star2" name="pitanje{{surv.id}}" value="4" (click)="rateIt(4, surv)"/>
             <label for="{{surv.id}}star2" title="text">2 stars</label>
             <input type="radio" id="{{surv.id}}star3" name="pitanje{{surv.id}}" value="3" (click)="rateIt(3, surv)"/>
             <label for="{{surv.id}}star3" title="text">3 stars</label>
-            <input type="radio" id="{{surv.id}}star4" name="pitanje{{surv.id}}" value="4" (click)="rateIt(4, surv)"/>
+            <input type="radio" id="{{surv.id}}star4" name="pitanje{{surv.id}}" value="2" (click)="rateIt(2, surv)"/>
             <label for="{{surv.id}}star4" title="text">4 stars</label>
-            <input type="radio" id="{{surv.id}}star5" name="pitanje{{surv.id}}" value="5" (click)="rateIt(5, surv)"/>
+            <input type="radio" id="{{surv.id}}star5" name="pitanje{{surv.id}}" value="1" (click)="rateIt(1, surv)"/>
             <label for="{{surv.id}}star5" title="text">5 stars</label>
           </div>
 
@@ -75,6 +75,6 @@
         </footer>
       </div>
       
-      <!--<button (click)="sendSurvey()" class="button is-primary w3-hover-white"> Send </button>-->
+      <button (click)="sendSurvey()" class="button is-primary w3-hover-white"> Send </button>
 
 </div>

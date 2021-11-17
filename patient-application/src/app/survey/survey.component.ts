@@ -8,7 +8,7 @@ import { SurveyService } from '../services/survey.service';
   styleUrls: ['./survey.component.css']
 })
 export class SurveyComponent implements OnInit {
-
+  surveyRatings: Array<any> = [];
 
   constructor(private _surveyService:SurveyService) { }
 
@@ -26,12 +26,39 @@ export class SurveyComponent implements OnInit {
 
 
 sendSurvey(): void{
-  //this._surveyService.sendSurveyToServer().subscribe(f => this.feedback = f);
+  this._surveyService.sendSurveyToServer(this.surveyRatings);
+  
+  
+  
+  /*for(let q of this.surveyRatings){
+    alert(q.value);
+  }*/
 }
 
-rateIt(value: number, question: any): void{
-  alert(question.id)
+rateIt(value: number, questionObject: any): void{
+  let provera: boolean = true
+  let question = {
+    id: questionObject.id,
+    text: questionObject.name,
+    value: value,
+    category: questionObject.enum
+  };
+  if(this.surveyRatings.length == 0){
+    this.surveyRatings.push(question);
+  }
+  else
+  {
+    for(let q of this.surveyRatings){
+      if(q.id == question.id){
+        q.value = question.value;
+        provera = false;
+        break;
+      }
+    }
+    if(provera){
+      this.surveyRatings.push(question);
+    }
+  }
 }
-
 
 }

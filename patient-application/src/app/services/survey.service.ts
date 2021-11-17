@@ -16,10 +16,12 @@ import { Router } from '@angular/router';
         return this.http.get<any>(this._url + 'survey');
     }
 
-    public sendSurveyToServer(values: Array<number>): void {
+    public sendSurveyToServer(questions: Array<any>): void {
       let survey = {
-        Values: values,
         PatientId: 1,
+        Questions: questions
+
+
       };
       this.http.post<any>(this._url + 'survey', survey).subscribe( () => {
         this.router.navigate(['']);
