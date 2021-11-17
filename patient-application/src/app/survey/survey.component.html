@@ -1,14 +1,11 @@
-<div class="column is-half spacing-left">
-    <h1>NASLOV</h1>
+<h1 class = "title w3-center m-5">Survey</h1>
     
-    
-    <div class="card spacing-down "  *ngFor="let surv of surveys">
 
-        <div *ngIf="surv.enum === 1">
-            uopa
-        </div>
-        <hr><br><br><br><br>
-
+<div class="tab column is-half spacing-left">
+   
+    <div class="card spacing-down " *ngFor="let surv of surveys">
+      
+        <hr><br><br>
 
         <div class="card-content level padding-left">
           <p class="title ">
@@ -28,53 +25,10 @@
             <label for="{{surv.id}}star5" title="text">5 stars</label>
           </div>
 
-
-
         </div>
-        <footer class="card-footer">
-            <div class="card-footer-item ">
-
-              <div class="control">
-                <label class="radio">
-                  <input type="radio" name="foobar">
-                  1
-                </label>
-                <label class="radio">
-                  <input type="radio" name="foobar" checked>
-                  2
-                </label>
-                <label class="radio">
-                  <input type="radio" name="foobar" checked>
-                  3
-                </label>
-                <label class="radio">
-                  <input type="radio" name="foobar" checked>
-                  4
-                </label>
-                <label class="radio">
-                  <input type="radio" name="foobar" checked>
-                  5
-                </label>
-              </div>
-
-
-              <div class="clasificacion">
-                <input id="radio1" type="radio" name="estrellas" value="5">
-               <label for="radio1">&#9733;</label>
-               <input id="radio2" type="radio" name="estrellas" value="4">
-               <label for="radio2">&#9733;</label>
-               <input id="radio3" type="radio" name="estrellas" value="3">
-               <label for="radio3">&#9733;</label>
-               <input id="radio4" type="radio" name="estrellas" value="2">
-               <label for="radio4">&#9733;</label>
-               <input id="radio5" type="radio" name="estrellas" value="1">
-               <label for="radio5">&#9733;</label>
-              </div>
-
-            </div>
-        </footer>
+        <br>
       </div>
       
-      <button (click)="sendSurvey()" class="button is-primary w3-hover-white"> Send </button>
+      <button (click)="sendSurvey()" class="button is-primary w3-center w3-hover-white"> Next </button>
 
 </div>

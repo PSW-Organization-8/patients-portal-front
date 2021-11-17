@@ -15,7 +15,6 @@ export class SurveyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   surveys = [
     {id: 1, name:'Tekst 1 pitanja', enum: 1},
     {id: 2, name:'Tekst 2 pitanjaaaaaaaaaaaaaaaaaaaaaaaaaaa', enum: 1},
@@ -27,16 +26,10 @@ export class SurveyComponent implements OnInit {
 
 sendSurvey(): void{
   this._surveyService.sendSurveyToServer(this.surveyRatings);
-  
-  
-  
-  /*for(let q of this.surveyRatings){
-    alert(q.value);
-  }*/
 }
 
 rateIt(value: number, questionObject: any): void{
-  let provera: boolean = true
+  let doPush: boolean = true
   let question = {
     id: questionObject.id,
     text: questionObject.name,
@@ -51,11 +44,11 @@ rateIt(value: number, questionObject: any): void{
     for(let q of this.surveyRatings){
       if(q.id == question.id){
         q.value = question.value;
-        provera = false;
+        doPush = false;
         break;
       }
     }
-    if(provera){
+    if(doPush){
       this.surveyRatings.push(question);
     }
   }
