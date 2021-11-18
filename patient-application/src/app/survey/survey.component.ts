@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { SurveyService } from '../services/survey.service';
 
+declare var step: any;
+
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.component.html',
@@ -13,6 +15,7 @@ export class SurveyComponent implements OnInit {
   constructor(private _surveyService:SurveyService) { }
 
   ngOnInit(): void {
+    new step();
   }
 
   surveys = [
