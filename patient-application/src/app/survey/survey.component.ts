@@ -16,11 +16,11 @@ export class SurveyComponent implements OnInit {
   }
 
   surveys = [
-    {id: 1, name:'Tekst 1 pitanja', enum: 1},
-    {id: 2, name:'Tekst 2 pitanjaaaaaaaaaaaaaaaaaaaaaaaaaaa', enum: 1},
-    {id: 3, name:'Tekst 3 pitanja', enum: 2},
-    {id: 4, name:'Tekst 4 pitanjaauauauauauauauauau', enum: 2},
-    {id: 5, name:'Tekst 5 pitanja', enum: 3}
+    {id: 1, name:'Tekst 1 pitanja', enum: 0},
+    {id: 2, name:'Tekst 2 pitanjaaaaaaaaaaaaaaaaaaaaaaaaaaa', enum: 0},
+    {id: 3, name:'Tekst 3 pitanja', enum: 1},
+    {id: 4, name:'Tekst 4 pitanjaauauauauauauauauau', enum: 1},
+    {id: 5, name:'Tekst 5 pitanja', enum: 2}
 ];
 
 

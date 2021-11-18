@@ -20,8 +20,6 @@ import { Router } from '@angular/router';
       let survey = {
         PatientId: 1,
         Questions: questions
-
-
       };
       this.http.post<any>(this._url + 'survey', survey).subscribe( () => {
         this.router.navigate(['']);
