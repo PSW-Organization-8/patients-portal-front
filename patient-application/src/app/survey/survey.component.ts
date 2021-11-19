@@ -16,23 +16,23 @@ export class SurveyComponent implements OnInit {
   }
 
   surveys = [
-    {id: 1, name:'Tekst 1 pitanja', enum: 0},
-    {id: 2, name:'Tekst 2 pitanja', enum: 0},
-    {id: 3, name:'Tekst 3 pitanja', enum: 0},
-    {id: 4, name:'Tekst 4 pitanja', enum: 0},
-    {id: 5, name:'Tekst 5pitanja', enum: 0},
+    {id: 1, text:'Tekst 1 pitanja', category: 0},
+    {id: 2, text:'Tekst 2 pitanja', category: 0},
+    {id: 3, text:'Tekst 3 pitanja', category: 0},
+    {id: 4, text:'Tekst 4 pitanja', category: 0},
+    {id: 5, text:'Tekst 5 pitanja', category: 0},
 
-    {id: 6, name:'Tekst 6 pitanja', enum: 1},
-    {id: 7, name:'Tekst 7 pitanjaa', enum: 1},
-    {id: 8, name:'Tekst 8 pitanja', enum: 1},
-    {id: 9, name:'Tekst 9 pitanja', enum: 1},
-    {id: 10, name:'Tekst 10 pitanja', enum: 1},
+    {id: 6, text:'Tekst 6 pitanja', category: 1},
+    {id: 7, text:'Tekst 7 pitanjaa', category: 1},
+    {id: 8, text:'Tekst 8 pitanja', category: 1},
+    {id: 9, text:'Tekst 9 pitanja', category: 1},
+    {id: 10, text:'Tekst 10 pitanja', category: 1},
 
-    {id: 11, name:'Tekst 1 pitanja', enum: 2},
-    {id: 12, name:'Tekst 11 pitanja', enum: 2},
-    {id: 13, name:'Tekst 5223 pitanja', enum: 2},
-    {id: 14, name:'Tekst 54 pitanja', enum: 2},
-    {id: 15, name:'Tekst 55 pitanja', enum: 2}
+    {id: 11, text:'Tekst 11 pitanja', category: 2},
+    {id: 12, text:'Tekst 12 pitanja', category: 2},
+    {id: 13, text:'Tekst 13 pitanja', category: 2},
+    {id: 14, text:'Tekst 14 pitanja', category: 2},
+    {id: 15, text:'Tekst 15 pitanja', category: 2}
   ]
 
 sendSurvey(): void {

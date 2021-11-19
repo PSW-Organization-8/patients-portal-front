@@ -38,20 +38,26 @@
     color: #c59b08;
 }
 
+.button-center{
+  text-align: center;
+  margin: auto;
+  display: flex;
+}
+
 .padding-left {
     padding-left: 1%;
 }
 
 
 .spacing-left {
-    margin-left: 25%;
+    margin-left: 20%;
 }
 
 .spacing-down {
     margin-bottom: 10px;
 }
   
-  .spacing-up {
+.spacing-up {
     margin-top: 10px;
 }
 
@@ -65,13 +71,7 @@
 
 .card-survey{
     width: 50%;
-
 }
-
-
-
-
-
 
 
 #wrapper form input[type="submit"] {
