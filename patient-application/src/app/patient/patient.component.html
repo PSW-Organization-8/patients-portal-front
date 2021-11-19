@@ -1,0 +1,52 @@
+<div class="container">
+<div class="field">
+    <label class="label">First name</label>
+    <div class="control">
+      <input class="input mr-5" type="text" placeholder="" [(ngModel)]="name">
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Last name</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="" [(ngModel)]="lastName">
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Username</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="" [(ngModel)]="username">
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <input class="input" type="email" placeholder="" [(ngModel)]="email">
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" type="password" placeholder="" [(ngModel)]="password">
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Doctors</label>
+    <div class="control">
+      <div class="select">
+        <select [(ngModel)]="doctor">
+          <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link" (click)="registerPatient()">Register</button>
+    </div>
+</div>
