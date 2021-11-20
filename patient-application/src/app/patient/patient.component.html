@@ -1,52 +1,123 @@
-<div class="container">
-<div class="field">
-    <label class="label">First name</label>
-    <div class="control">
-      <input class="input mr-5" type="text" placeholder="" [(ngModel)]="name">
-    </div>
-</div>
-
-<div class="field">
-    <label class="label">Last name</label>
-    <div class="control">
-      <input class="input" type="text" placeholder="" [(ngModel)]="lastName">
-    </div>
-</div>
-
-<div class="field">
-    <label class="label">Username</label>
-    <div class="control">
-      <input class="input" type="text" placeholder="" [(ngModel)]="username">
-    </div>
-</div>
-
-<div class="field">
-    <label class="label">Email</label>
-    <div class="control">
-      <input class="input" type="email" placeholder="" [(ngModel)]="email">
-    </div>
-</div>
-
-<div class="field">
-    <label class="label">Password</label>
-    <div class="control">
-      <input class="input" type="password" placeholder="" [(ngModel)]="password">
-    </div>
-</div>
-
-<div class="field">
-    <label class="label">Doctors</label>
-    <div class="control">
-      <div class="select">
-        <select [(ngModel)]="doctor">
-          <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}}</option>
-        </select>
+<div class="columns is-mobile is-centered mt-5 mb-5">
+  <div class="column is-one-third is-hcentered">
+    <div class="field">
+      <label class="label">First name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="" [(ngModel)]="name">
       </div>
     </div>
-  </div>
 
-  <div class="field is-grouped">
-    <div class="control">
-      <button class="button is-link" (click)="registerPatient()">Register</button>
+    <div class="field">
+      <label class="label">Last name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="" [(ngModel)]="lastName">
+      </div>
     </div>
+
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="" [(ngModel)]="username">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" placeholder="" [(ngModel)]="email">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input class="input" type="password" placeholder="" [(ngModel)]="password">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Jmbg</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="" [(ngModel)]="jmbg">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Phone</label>
+      <div class="control">
+        <input class="input" type="string" placeholder="" [(ngModel)]="phone">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Date of birth</label>
+      <div class="control">
+        <input class="input" type="date" placeholder="" [(ngModel)]="dateOfBirth">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Country</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="" [(ngModel)]="country">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">City</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="" [(ngModel)]="city">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Address</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="" [(ngModel)]="address">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Blood type</label>
+      <div class="control">
+        <div class="select">
+          <select [(ngModel)]="bloodType">
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Doctors</label>
+        <div class="select">
+          <select [(ngModel)]="doctor">
+            <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}}</option>
+          </select>
+        </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Allergens</label>
+        <div class="select is-multiple">
+          <select [(ngModel)]="selectedAllergens" multiple>
+            <option *ngFor="let a of allergens" [ngValue]="a">{{a.name}}</option>
+          </select>
+        </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" (click)="registerPatient()">Register</button>
+      </div>
+    </div>
+
+  </div>
 </div>

@@ -13,12 +13,16 @@ import { Router } from '@angular/router';
     constructor(private http: HttpClient, private router:Router) {}
 
     public getPatientFromServer(patientId: string): any {
-        return this.http.get<any>(this._url + 'patient/' + "1");
-      }
+      return this.http.get<any>(this._url + 'patient/' + "1");
+    }
 
     public getFreeDoctors() {
       return this.http.get<any>(this._url + 'doctor');
-      }
+    }
+
+    public getAllergens() {
+      return this.http.get<any>(this._url + 'allergen');
+    }
 
     public registerPatient(name: string, lastName: string, username: string, password: string){
       let patient = {
@@ -29,7 +33,7 @@ import { Router } from '@angular/router';
       };
       return this.http.post<any>(this._url + 'patient', patient).subscribe( () => {
         this.router.navigate(['']);
-      }
+        }
       );
     }
   }
