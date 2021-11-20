@@ -11,6 +11,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { PatientComponent } from './patient/patient.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PatientComponent } from './patient/patient.component';
     FormsModule,
     AppRoutingModule,
     RouterModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [RandomNumberGeneratorService],
   bootstrap: [AppComponent]

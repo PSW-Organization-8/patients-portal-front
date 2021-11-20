@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PatientService } from '../services/patient.serivce';
 
 @Component({
@@ -8,10 +9,12 @@ import { PatientService } from '../services/patient.serivce';
 })
 export class PatientComponent implements OnInit {
 
+  
+  dropdownSettings:IDropdownSettings={};
   doctors: any;
   doctor: any;
   allergens: any;
-  selectedAllergens: any;
+  selectedAllergens: Array<any> = [];
   name: string ="";
   lastName: string ="";
   username: string ="";
@@ -30,6 +33,13 @@ export class PatientComponent implements OnInit {
   ngOnInit(): void {
     this.getFreeDoctor();
     this.getAllergens();
+    this.dropdownSettings = {
+      idField: 'id',
+      textField: 'name',
+      noDataAvailablePlaceholderText: "There is no allergens to show",
+      enableCheckAll: false,
+      allowSearchFilter: true,
+    };
   }
 
   registerPatient(): void{
@@ -44,4 +54,19 @@ export class PatientComponent implements OnInit {
     this._patientService.getAllergens().subscribe(f => this.allergens = f);
   }
 
+  onItemSelect(item: any) {
+    this.selectedAllergens.push(item);
+  }
+
+  onItemDeSelect(obj: any) {
+    this.selectedAllergens = this.selectedAllergens.filter(item => item !== obj);
+  }
+  
+  onSelectAll(items: any) {
+    this.selectedAllergens.push(items);
+  }
+  
+  onUnSelectAll() {
+    this.selectedAllergens = [];
+  }
 }
