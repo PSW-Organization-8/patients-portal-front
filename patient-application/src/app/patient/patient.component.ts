@@ -45,7 +45,7 @@ export class PatientComponent implements OnInit {
   }
 
   registerPatient(): void{
-    this._patientService.registerPatient(this.name, this.lastName, this.username, this.password);
+    this._patientService.registerPatient(this.name, this.lastName, this.username, this.password, this.jmbg, this.email, this.phone, this.selectedAllergens, this.dateOfBirth, this.bloodType, this.country, this.city, this.address, this.doctor);
   }
 
   getFreeDoctor():void {
@@ -57,18 +57,10 @@ export class PatientComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    this.selectedAllergens.push(item);
+    this.selectedAllergens.push(item.Id);
   }
 
   onItemDeSelect(obj: any) {
     this.selectedAllergens = this.selectedAllergens.filter(item => item !== obj);
-  }
-  
-  onSelectAll(items: any) {
-    this.selectedAllergens.push(items);
-  }
-  
-  onUnSelectAll() {
-    this.selectedAllergens = [];
   }
 }

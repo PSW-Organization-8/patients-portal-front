@@ -24,12 +24,19 @@ import { Router } from '@angular/router';
       return this.http.get<any>(this._url + 'allergen');
     }
 
-    public registerPatient(name: string, lastName: string, username: string, password: string){
+    public registerPatient(name:string, lastName:string, username:string, password:string, jmbg:string, email:string, phone:string, selectedAllergens:any, dateOfBirth:string, bloodType:string, country:string, city:string, address: string, doctor: any){
       let patient = {
         Name: name,
         LastName: lastName,
+        Jmbg: jmbg,
         Username: username,
         Password: password,
+        Email: email,
+        Phone: phone,
+        DateOfBirth: dateOfBirth,
+        //Allergens: selectedAllergens,
+        Doctor: doctor,
+        IsActivated: false,
       };
       return this.http.post<any>(this._url + 'patient', patient).subscribe( () => {
         this.router.navigate(['']);
