@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PatientService } from '../services/patient.serivce';
@@ -26,7 +27,8 @@ export class PatientComponent implements OnInit {
   bloodType: string ="";
   jmbg: string ="";
   phone: string ="";
-  dateOfBirth: string ="";
+  dateOfBirth: string = "";
+  todayDate:string = formatDate(new Date(), 'yyyy-MM-dd', 'en_US');
 
   constructor(private _patientService:PatientService) { }
 

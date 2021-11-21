@@ -96,7 +96,7 @@
     <div class="field">
       <label class="label">Date of birth</label>
       <div class="control">
-        <input name="dateOfBirthInput" class="input" type="date" required [(ngModel)]="dateOfBirth" #dateOfBirthInput="ngModel">
+        <input name="dateOfBirthInput" class="input" type="date" [max]="todayDate" required [(ngModel)]="dateOfBirth" #dateOfBirthInput="ngModel" date="true">
       </div>
       <div *ngIf="dateOfBirthInput.invalid" class="alert" style="color:red">
         <div *ngIf="dateOfBirthInput.errors?.['required']">
