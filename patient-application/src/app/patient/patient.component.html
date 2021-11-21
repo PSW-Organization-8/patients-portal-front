@@ -72,21 +72,36 @@
     <div class="field">
       <label class="label">Jmbg</label>
       <div class="control">
-        <input class="input" type="text" placeholder="" [(ngModel)]="jmbg">
+        <input name="jmbgInput" class="input" type="text" required minlength="13" maxlength="13" pattern="[0-9]+" [(ngModel)]="jmbg" #jmbgInput="ngModel">
+      </div>
+      <div *ngIf="jmbgInput.invalid" class="alert" style="color:red">
+        <div *ngIf="jmbgInput.errors?.['required'] || jmbgInput.errors?.['minlength'] || jmbgInput.errors?.['maxlength'] || jmbgInput.errors?.['pattern']">
+          *Wrong jmbg format.
+        </div>
       </div>
     </div>
 
     <div class="field">
       <label class="label">Phone</label>
       <div class="control">
-        <input class="input" type="string" placeholder="" [(ngModel)]="phone">
+        <input name="phoneInput" class="input" type="string" pattern="[0-9]+" [(ngModel)]="phone" #phoneInput="ngModel">
+      </div>
+      <div *ngIf="phoneInput.invalid" class="alert" style="color:red">
+        <div *ngIf="phoneInput.errors?.['pattern']">
+          *The phone can only contain numbers.
+        </div>
       </div>
     </div>
 
     <div class="field">
       <label class="label">Date of birth</label>
       <div class="control">
-        <input class="input" type="date" placeholder="" [(ngModel)]="dateOfBirth">
+        <input name="dateOfBirthInput" class="input" type="date" required [(ngModel)]="dateOfBirth" #dateOfBirthInput="ngModel">
+      </div>
+      <div *ngIf="dateOfBirthInput.invalid" class="alert" style="color:red">
+        <div *ngIf="dateOfBirthInput.errors?.['required']">
+          *Date of birth is required.
+        </div>
       </div>
     </div>
 
@@ -115,16 +130,19 @@
       <label class="label">Blood type</label>
       <div class="control">
         <div class="select">
-          <select [(ngModel)]="bloodType">
-            <option>A+</option>
-            <option>A-</option>
-            <option>B+</option>
-            <option>B-</option>
-            <option>AB+</option>
-            <option>AB-</option>
-            <option>O+</option>
-            <option>O-</option>
-          </select>
+          <form name="select" class="select">
+            <select [(ngModel)]="bloodType">
+              <option selected>Unknown</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>AB+</option>
+              <option>AB-</option>
+              <option>O+</option>
+              <option>O-</option>
+            </select>
+          </form>
         </div>
       </div>
     </div>
@@ -132,9 +150,14 @@
     <div class="field">
       <label class="label">Doctors</label>
         <div class="select">
-          <select [(ngModel)]="doctor">
+          <select name="doctorSelect" required [(ngModel)]="doctor" #doctorSelect="ngModel">
             <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}}</option>
           </select>
+        </div>
+        <div *ngIf="doctorSelect.invalid" class="alert" style="color:red">
+          <div *ngIf="doctorSelect.errors?.['required']">
+            *Doctor is required.
+          </div>
         </div>
     </div>
 
@@ -155,7 +178,7 @@
 
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-link" [disabled]="nameInput.invalid || lastNameInput.invalid" (click)="registerPatient()">Register</button>
+        <button class="button is-link" [disabled]="nameInput.invalid || lastNameInput.invalid || usernameInput.invalid || emailInput.invalid || passwordInput.invalid || jmbgInput.invalid || dateOfBirthInput.invalid || doctorSelect.invalid" (click)="registerPatient()">Register</button>
       </div>
     </div>
 
