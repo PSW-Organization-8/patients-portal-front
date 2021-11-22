@@ -9,6 +9,8 @@ import { DoctorService } from '../services/doctor.service';
 })
 export class PatientRecordComponent implements OnInit {
 
+  appointments: any;
+  allergies: any;
   doctor: any;
   patient: any;
   constructor(private _patientService:PatientService, private _doctorService:DoctorService) { }
@@ -21,12 +23,19 @@ export class PatientRecordComponent implements OnInit {
     this._patientService.getPatientFromServer(1).subscribe(
       (successData: any) => {  this.patient = successData },
       () => {},
-      () => { this.getDoctor(this.patient.id) }
+      () => { this.getDoctor(this.patient.id), this.getAllergies(), this.getAppointmets(this.patient.id) }
       );
   }
 
-  getDoctor(x: number): void{
-    this._doctorService.getDoctorFromServer(x).subscribe((d: any) => this.doctor = d);
+  getDoctor(id: number): void{
+    this._doctorService.getDoctorFromServer(id).subscribe((d: any) => this.doctor = d);
   }
 
+  getAllergies(){
+    this._patientService.getAllergens().subscribe(a => this.allergies = a)
+  }
+
+  getAppointmets(id: number): void {
+    this._patientService.getPatientAppointments(id).subscribe(ap => this.appointments = ap)
+  }
 }

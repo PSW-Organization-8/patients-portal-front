@@ -18,9 +18,7 @@
           <article class="tile is-child notification is-info">
             <p class="title">Anamneses</p>
             <p class="subtitle">Current doctor: {{doctor.fullName}}</p>
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/640x480.png">
-            </figure>
+            <p class="subtitle">Placeholder</p>
           </article>
         </div>
       </div>
@@ -28,8 +26,7 @@
         <article class="tile is-child notification is-danger">
           <p class="title">Allergies</p>
           <label class="subtitle">You are allergic to: </label>
-          <label class="subtitle"> Prasina, </label>
-          <label class="subtitle"> Polen </label>
+          <label class="subtitle" *ngFor="let a of allergies"> {{a.name}} </label>
           <div class="content">
             <!-- Content -->
           </div>
@@ -40,7 +37,7 @@
         <article class="tile is-child notification is-success">
           <div class="content">
             <p class="title">Appointments</p>
-            <p class="subtitle">appointment list goes here</p>
+              <p class="subtitle is-danger m-5 p-5 has-text-centered" *ngFor="let ap of appointments" > Scheduled at: {{ap.startTime.slice(0,10)}} 9:30 AM  Appointment Type: {{ap.type}}</p> 
             <div class="content">
               <!-- Content -->
           </div>

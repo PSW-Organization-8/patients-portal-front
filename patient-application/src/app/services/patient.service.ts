@@ -24,6 +24,10 @@ import { Router } from '@angular/router';
       return this.http.get<any>(this._url + 'allergen');
     }
 
+    public getPatientAppointments(patientId: number) {
+      return this.http.get<any>(this._url + 'appointment/' + patientId);
+    }
+
     public registerPatient(name:string, lastName:string, username:string, password:string, jmbg:string, email:string, phone:string, selectedAllergens:any, dateOfBirth:string, bloodType:string, country:string, city:string, address: string, doctor: any){
       let patient = {
         Name: name,
