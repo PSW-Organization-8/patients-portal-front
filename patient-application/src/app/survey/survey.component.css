@@ -24,18 +24,20 @@
     content: '★ ';
 }
 .rate > input:checked ~ label {
-    color: #ffc700;    
+
+    color: #EFB0A1;    
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
+    color: #EFB0A1;  
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+
+    color: #EFB0A1;
 }
 
 .button-center{
@@ -94,11 +96,11 @@
   
   label:hover,
   label:hover ~ label {
-    color: orange;
+    color: #EFB0A1;
   }
   
   input[type="radio"]:checked ~ label {
-    color: orange;
+    color: #EFB0A1;
   }
 
 
@@ -113,6 +115,7 @@
   
   h1 {
     text-align: center;  
+    color: white;
   }
   
   input {
