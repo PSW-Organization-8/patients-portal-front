@@ -1,7 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { PatientService } from '../services/patient.serivce';
+import { PatientService } from '../services/patient.service';
 
 @Component({
   selector: 'app-patient',

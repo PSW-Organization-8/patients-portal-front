@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
     private _url = serverPort;
     constructor(private http: HttpClient, private router:Router) {}
 
-    public getPatientFromServer(patientId: string): any {
-      return this.http.get<any>(this._url + 'patient/' + "1");
+    public getPatientFromServer(patientId: number): any {
+      return this.http.get<any>(this._url + 'patient/' + patientId);
     }
 
     public getFreeDoctors() {
@@ -22,6 +22,10 @@ import { Router } from '@angular/router';
 
     public getAllergens() {
       return this.http.get<any>(this._url + 'allergen');
+    }
+
+    public getPatientAppointments(patientId: number) {
+      return this.http.get<any>(this._url + 'appointment/' + patientId);
     }
 
     public registerPatient(name:string, lastName:string, username:string, password:string, jmbg:string, email:string, phone:string, selectedAllergens:any, dateOfBirth:string, bloodType:string, country:string, city:string, address: string, doctor: any){

@@ -10,6 +10,7 @@ import { RandomNumberGeneratorService } from './services/feedback.service';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { PatientRecordComponent } from './patient-record/patient-record.component';
 import { PatientComponent } from './patient/patient.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { LoginComponent } from './login/login.component';
@@ -21,8 +22,9 @@ import { SurveyComponent } from './survey/survey.component';
     FeedbackComponent,
     HomeComponent,
     HeaderComponent,
+    PatientRecordComponent,
     PatientComponent,
-    LoginComponent
+    LoginComponent,
     SurveyComponent
   ],
   imports: [

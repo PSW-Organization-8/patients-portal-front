@@ -1,0 +1,47 @@
+<div class="tile is-ancestor m-5">
+    <div class="tile is-vertical is-8">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-primary">
+            <p class="title"> {{patient.fullName}} </p>
+            <p class="subtitle  mt-5">Username: {{patient.username}}</p>
+            <p class="subtitle">Social Security Number: {{patient.jmbg}}</p>
+            <p class="subtitle">Date of Birth: {{patient.dateOfBirth.slice(0, 10)}}</p>
+          </article>
+          <article class="tile is-child notification is-warning">
+            <p class="title">Contact Information</p>
+            <p class="subtitle  mt-5">Mobile: {{patient.phone}}</p>
+            <p class="subtitle">E-mail: {{patient.email}}</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-info">
+            <p class="title">Anamneses</p>
+            <p class="subtitle">Current doctor: {{doctor.fullName}}</p>
+            <p class="subtitle">Placeholder</p>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-danger">
+          <p class="title">Allergies</p>
+          <label class="subtitle">You are allergic to: </label>
+          <label class="subtitle" *ngFor="let a of allergies"> {{a.name}} </label>
+          <div class="content">
+            <!-- Content -->
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+        <article class="tile is-child notification is-success">
+          <div class="content">
+            <p class="title">Appointments</p>
+              <p class="subtitle is-danger m-5 p-5 has-text-centered" *ngFor="let ap of appointments" > Scheduled at: {{ap.startTime.slice(0,10)}} 9:30 AM  Appointment Type: {{ap.type}}</p> 
+            <div class="content">
+              <!-- Content -->
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RandomNumberGeneratorService } from '../services/feedback.service';
-import { PatientService } from '../services/patient.serivce';
+import { PatientService } from '../services/patient.service';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +15,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getApprovedFeedback();
+    this.getPatient();
   }
 
   getApprovedFeedback(): void{
     this._feedbackService.getApprovedFeedbackFromServer().subscribe(f => this.approvedFeedback = f);
+  }
+
+  getPatient(): void{
+    this._patientService.getPatientFromServer(1).subscribe((p: any) => this.patient = p);
   }
 }
