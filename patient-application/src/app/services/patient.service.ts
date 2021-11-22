@@ -13,6 +13,34 @@ import { Router } from '@angular/router';
     constructor(private http: HttpClient, private router:Router) {}
 
     public getPatientFromServer(patientId: number): any {
-        return this.http.get<any>(this._url + 'patient/' + patientId);
-      }
+      return this.http.get<any>(this._url + 'patient/' + patientId);
+    }
+
+    public getFreeDoctors() {
+      return this.http.get<any>(this._url + 'doctor');
+    }
+
+    public getAllergens() {
+      return this.http.get<any>(this._url + 'allergen');
+    }
+
+    public registerPatient(name:string, lastName:string, username:string, password:string, jmbg:string, email:string, phone:string, selectedAllergens:any, dateOfBirth:string, bloodType:string, country:string, city:string, address: string, doctor: any){
+      let patient = {
+        Name: name,
+        LastName: lastName,
+        Jmbg: jmbg,
+        Username: username,
+        Password: password,
+        Email: email,
+        Phone: phone,
+        DateOfBirth: dateOfBirth,
+        Allergens: selectedAllergens,
+        DoctorId: doctor.id,
+        IsActivated: false,
+      };
+      return this.http.post<any>(this._url + 'patient', patient).subscribe( () => {
+        this.router.navigate(['']);
+        }
+      );
+    }
   }
