@@ -57,7 +57,7 @@ export class PatientComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    this.selectedAllergens.push(item.Id);
+    this.selectedAllergens.push(item);
   }
 
   onItemDeSelect(obj: any) {

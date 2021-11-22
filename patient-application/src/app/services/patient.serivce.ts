@@ -34,7 +34,7 @@ import { Router } from '@angular/router';
         Email: email,
         Phone: phone,
         DateOfBirth: dateOfBirth,
-        //Allergens: selectedAllergens,
+        Allergens: selectedAllergens,
         Doctor: doctor,
         IsActivated: false,
       };

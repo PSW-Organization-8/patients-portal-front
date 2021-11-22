@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { PatientComponent } from './patient/patient.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FeedbackComponent,
     HomeComponent,
     HeaderComponent,
-    PatientComponent
+    PatientComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
