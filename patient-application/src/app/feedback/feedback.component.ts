@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { RandomNumberGeneratorService } from '../services/feedback.service';
-import { PatientService } from '../services/patient.serivce';
+import { PatientService } from '../services/patient.service';
 
 @Component({
   selector: 'app-feedback',
