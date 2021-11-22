@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RandomNumberGeneratorService } from '../services/feedback.service';
-import { PatientService } from '../services/patient.serivce';
+import { PatientService } from '../services/patient.service';
 
 @Component({
   selector: 'app-home',
