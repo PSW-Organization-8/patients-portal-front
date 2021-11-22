@@ -10,6 +10,9 @@ import { RandomNumberGeneratorService } from './services/feedback.service';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { PatientComponent } from './patient/patient.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { LoginComponent } from './login/login.component';
 import { SurveyComponent } from './survey/survey.component';
 
 @NgModule({
@@ -18,6 +21,8 @@ import { SurveyComponent } from './survey/survey.component';
     FeedbackComponent,
     HomeComponent,
     HeaderComponent,
+    PatientComponent,
+    LoginComponent
     SurveyComponent
   ],
   imports: [
@@ -26,7 +31,8 @@ import { SurveyComponent } from './survey/survey.component';
     FormsModule,
     AppRoutingModule,
     RouterModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [RandomNumberGeneratorService],
   bootstrap: [AppComponent]
