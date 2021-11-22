@@ -11,6 +11,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { PatientRecordComponent } from './patient-record/patient-record.component';
+import { SurveyComponent } from './survey/survey.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PatientRecordComponent } from './patient-record/patient-record.componen
     FeedbackComponent,
     HomeComponent,
     HeaderComponent,
-    PatientRecordComponent
+    PatientRecordComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,

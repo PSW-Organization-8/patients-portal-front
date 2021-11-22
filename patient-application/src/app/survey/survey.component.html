@@ -1,0 +1,97 @@
+
+<div class="column is-two-thirds spacing-left">
+    <div class="is-color">
+      <h1 class = "title m-5">About Doctor</h1><hr>
+      <div *ngFor="let surv of surveys">
+          <div class="card spacing-down " *ngIf="surv.category==0">
+          
+            <hr><br>
+
+            <div class="card-content level padding-left">
+              <p class="text-survey ">{{surv.text}}</p>
+
+              <div class="rate" id="group{{surv.id}}">
+                <input type="radio" id="{{surv.id}}star1" name="group{{surv.id}}" value="5"  (click)="rateIt(5, surv)"/>
+                <label for="{{surv.id}}star1" title="text">1 star</label>
+                <input type="radio" id="{{surv.id}}star2" name="group{{surv.id}}" value="4" (click)="rateIt(4, surv)"/>
+                <label for="{{surv.id}}star2" title="text">2 stars</label>
+                <input type="radio" id="{{surv.id}}star3" name="group{{surv.id}}" value="3" (click)="rateIt(3, surv)"/>
+                <label for="{{surv.id}}star3" title="text">3 stars</label>
+                <input type="radio" id="{{surv.id}}star4" name="group{{surv.id}}" value="2" (click)="rateIt(2, surv)"/>
+                <label for="{{surv.id}}star4" title="text">4 stars</label>
+                <input type="radio" id="{{surv.id}}star5" name="group{{surv.id}}" value="1" (click)="rateIt(1, surv)"/>
+                <label for="{{surv.id}}star5" title="text">5 stars</label>
+              </div>
+
+            </div>
+            <br>
+          </div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="is-primary">
+      <h1 class = "title m-5"> About Hospital</h1><hr>
+      <div *ngFor="let surv of surveys">
+          <div class="card spacing-down " *ngIf="surv.category==1">
+          
+            <hr><br>
+
+            <div class="card-content level padding-left">
+              <p class="text-survey ">{{surv.text}}</p>
+
+              <div class="rate" id="group{{surv.id}}">
+                <input type="radio" id="{{surv.id}}star1" name="group{{surv.id}}" value="5"  (click)="rateIt(5, surv)"/>
+                <label for="{{surv.id}}star1" title="text">1 star</label>
+                <input type="radio" id="{{surv.id}}star2" name="group{{surv.id}}" value="4" (click)="rateIt(4, surv)"/>
+                <label for="{{surv.id}}star2" title="text">2 stars</label>
+                <input type="radio" id="{{surv.id}}star3" name="group{{surv.id}}" value="3" (click)="rateIt(3, surv)"/>
+                <label for="{{surv.id}}star3" title="text">3 stars</label>
+                <input type="radio" id="{{surv.id}}star4" name="group{{surv.id}}" value="2" (click)="rateIt(2, surv)"/>
+                <label for="{{surv.id}}star4" title="text">4 stars</label>
+                <input type="radio" id="{{surv.id}}star5" name="group{{surv.id}}" value="1" (click)="rateIt(1, surv)"/>
+                <label for="{{surv.id}}star5" title="text">5 stars</label>
+              </div>
+
+            </div>
+            <br>
+          </div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="is-color">
+      <h1 class = "title m-5"> About Medical Stuff</h1><hr>
+
+      <div *ngFor="let surv of surveys">
+          <div class="card spacing-down " *ngIf="surv.category==2">
+          
+            <hr><br>
+
+            <div class="card-content level padding-left">
+              <p class="text-survey ">{{surv.text}}</p>
+
+              <div class="rate" id="group{{surv.id}}">
+                <input type="radio" id="{{surv.id}}star1" name="group{{surv.id}}" value="5"  (click)="rateIt(5, surv)"/>
+                <label for="{{surv.id}}star1" title="text">1 star</label>
+                <input type="radio" id="{{surv.id}}star2" name="group{{surv.id}}" value="4" (click)="rateIt(4, surv)"/>
+                <label for="{{surv.id}}star2" title="text">2 stars</label>
+                <input type="radio" id="{{surv.id}}star3" name="group{{surv.id}}" value="3" (click)="rateIt(3, surv)"/>
+                <label for="{{surv.id}}star3" title="text">3 stars</label>
+                <input type="radio" id="{{surv.id}}star4" name="group{{surv.id}}" value="2" (click)="rateIt(2, surv)"/>
+                <label for="{{surv.id}}star4" title="text">4 stars</label>
+                <input type="radio" id="{{surv.id}}star5" name="group{{surv.id}}" value="1" (click)="rateIt(1, surv)"/>
+                <label for="{{surv.id}}star5" title="text">5 stars</label>
+              </div>
+
+            </div>
+            <br>
+          </div>
+        </div>
+    </div>
+      
+    <button class="button-center" (click)="sendSurvey()" class="button is-large is-primary w3-right w3-hover-white m-5"> Send </button>
+
+</div>
