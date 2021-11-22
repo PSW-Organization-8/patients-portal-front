@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { PatientComponent } from './patient/patient.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { LoginComponent } from './login/login.component';
+import { SurveyComponent } from './survey/survey.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     PatientComponent,
     LoginComponent
+    SurveyComponent
   ],
   imports: [
     BrowserModule,
