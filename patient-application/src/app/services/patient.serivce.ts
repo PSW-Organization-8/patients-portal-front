@@ -35,7 +35,7 @@ import { Router } from '@angular/router';
         Phone: phone,
         DateOfBirth: dateOfBirth,
         Allergens: selectedAllergens,
-        Doctor: doctor,
+        DoctorId: doctor.id,
         IsActivated: false,
       };
       return this.http.post<any>(this._url + 'patient', patient).subscribe( () => {
