@@ -16,23 +16,23 @@ export class SurveyComponent implements OnInit {
   }
 
   surveys = [
-    {id: 1, text:'Tekst 1 pitanja', category: 0},
-    {id: 2, text:'Tekst 2 pitanja', category: 0},
-    {id: 3, text:'Tekst 3 pitanja', category: 0},
-    {id: 4, text:'Tekst 4 pitanja', category: 0},
-    {id: 5, text:'Tekst 5 pitanja', category: 0},
+    {id: 1, text:'How would you rate doctors professionalism?', category: 0},
+    {id: 2, text:'How would you rate doctors politeness?', category: 0},
+    {id: 3, text:'How would you rate doctors technicality?', category: 0},
+    {id: 4, text:'How would you rate doctors skill?', category: 0},
+    {id: 5, text:'How would you rate doctors knowledge?', category: 0},
 
-    {id: 6, text:'Tekst 6 pitanja', category: 1},
-    {id: 7, text:'Tekst 7 pitanjaa', category: 1},
-    {id: 8, text:'Tekst 8 pitanja', category: 1},
-    {id: 9, text:'Tekst 9 pitanja', category: 1},
-    {id: 10, text:'Tekst 10 pitanja', category: 1},
+    {id: 6, text:'How would you rate hospital environment?', category: 1},
+    {id: 7, text:'How would you rate hospital equipment?', category: 1},
+    {id: 8, text:'How would you rate hospital hygiene?', category: 1},
+    {id: 9, text:'How would you rate hospital prices?', category: 1},
+    {id: 10, text:'How would you rate hospital waiting time?', category: 1},
 
-    {id: 11, text:'Tekst 11 pitanja', category: 2},
-    {id: 12, text:'Tekst 12 pitanja', category: 2},
-    {id: 13, text:'Tekst 13 pitanja', category: 2},
-    {id: 14, text:'Tekst 14 pitanja', category: 2},
-    {id: 15, text:'Tekst 15 pitanja', category: 2}
+    {id: 11, text:'How would you rate medical staffs professionalism?', category: 2},
+    {id: 12, text:'How would you rate medical staffs politeness?', category: 2},
+    {id: 13, text:'How would you rate medical staffs technicality?', category: 2},
+    {id: 14, text:'How would you rate medical staffs skill?', category: 2},
+    {id: 15, text:'How would you rate medical staffs knowledge?', category: 2}
   ]
 
 sendSurvey(): void {
@@ -72,9 +72,9 @@ rateIt(value: number, questionObject: any): void{
   let doPush: boolean = true
   let question = {
     id: questionObject.id,
-    text: questionObject.name,
+    text: questionObject.text,
     value: value,
-    category: questionObject.enum
+    category: questionObject.category
   };
   if(this.surveyRatings.length == 0){
     this.surveyRatings.push(question);
