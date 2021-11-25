@@ -108,21 +108,31 @@
     <div class="field">
       <label class="label">Country</label>
       <div class="control">
-        <input class="input" type="text" placeholder="" [(ngModel)]="country">
+        <input class="input" name="countryInput" type="text" pattern="[a-zA-Z\s]+" [(ngModel)]="country" #countryInput="ngModel">
+      </div>
+      <div *ngIf="countryInput.invalid" class="alert" style="color:red">
+        <div *ngIf="countryInput.errors?.['pattern']">
+          *Country can contain only letters.
+        </div>
       </div>
     </div>
 
     <div class="field">
       <label class="label">City</label>
       <div class="control">
-        <input class="input" type="text" placeholder="" [(ngModel)]="city">
+        <input class="input" name="cityInput" type="text" pattern="[a-zA-Z\s]+" [(ngModel)]="city" #cityInput="ngModel">
+      </div>
+      <div *ngIf="cityInput.invalid" class="alert" style="color:red">
+        <div *ngIf="cityInput.errors?.['pattern']">
+          *City can contain only letters.
+        </div>
       </div>
     </div>
 
     <div class="field">
       <label class="label">Address</label>
       <div class="control">
-        <input class="input" type="text" placeholder="" [(ngModel)]="address">
+        <input class="input" type="text" [(ngModel)]="address">
       </div>
     </div>
 
@@ -131,16 +141,16 @@
       <div class="control">
         <div class="select">
           <form name="select" class="select">
-            <select [(ngModel)]="bloodType">
-              <option selected>Unknown</option>
-              <option>A+</option>
-              <option>A-</option>
-              <option>B+</option>
-              <option>B-</option>
-              <option>AB+</option>
-              <option>AB-</option>
-              <option>O+</option>
-              <option>O-</option>
+            <select id="bloodTypeSelect">
+              <option selected value="Unknown">Unknown</option>
+              <option value="Ap">A+</option>
+              <option value="An">A-</option>
+              <option value="Bp">B+</option>
+              <option value="Bn">B-</option>
+              <option value="ABp">AB+</option>
+              <option value="ABn">AB-</option>
+              <option value="Op">O+</option>
+              <option value="On">O-</option>
             </select>
           </form>
         </div>
@@ -176,7 +186,8 @@
 
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-link" [disabled]="nameInput.invalid || lastNameInput.invalid || usernameInput.invalid || emailInput.invalid || passwordInput.invalid || jmbgInput.invalid || dateOfBirthInput.invalid || doctorSelect.invalid" (click)="registerPatient()">Register</button>
+        <button class="button is-link" [disabled]="nameInput.invalid || lastNameInput.invalid || usernameInput.invalid || emailInput.invalid || passwordInput.invalid ||
+         jmbgInput.invalid || dateOfBirthInput.invalid || doctorSelect.invalid || countryInput.invalid || cityInput.invalid" (click)="registerPatient()">Register</button>
       </div>
     </div>
 
