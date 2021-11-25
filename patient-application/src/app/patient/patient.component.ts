@@ -45,7 +45,10 @@ export class PatientComponent implements OnInit {
   }
 
   registerPatient(): void{
-    this._patientService.registerPatient(this.name, this.lastName, this.username, this.password, this.jmbg, this.email, this.phone, this.selectedAllergens, this.dateOfBirth, this.bloodType, this.country, this.city, this.address, this.doctor);
+    var bloodTypeSelect = (<HTMLInputElement>document.getElementById("bloodTypeSelect")).value;
+    this.bloodType = String(bloodTypeSelect);
+    this._patientService.registerPatient(this.name, this.lastName, this.username, this.password, this.jmbg, this.email, this.phone, this.selectedAllergens, 
+      this.dateOfBirth, this.bloodType, this.country, this.city, this.address, this.doctor);
   }
 
   getFreeDoctor():void {
