@@ -22,4 +22,13 @@ export class StandardAppointmentComponent implements OnInit {
   showDoctors(): void {
     this._standardAppointmentService.getSpecificDoctors(this.selectedOption).subscribe(doctors => this.doctors = doctors);
   }
+
+  scheduleAppointment(): void{
+    let appointment = {
+      "startTime": Date.now,
+      "doctorId": this.doctor.id,
+      "patientId": 1
+    }
+    this._standardAppointmentService.scheduleAppointment(appointment)
+  }
 }
