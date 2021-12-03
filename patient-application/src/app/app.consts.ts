@@ -18,15 +18,15 @@ export const doctorSpecializations = [{
   {
     name: "Dermatologist",
     value: 3
-  },
+  }, 
   {
     name: "Cardiologist",
     value: 4
-  },
+  }, 
   {
     name: "Otorhinolaryngologist",
     value: 5
-  },
+  }, 
   {
     name: "Urologist",
     value: 6
@@ -39,4 +39,4 @@ export const doctorSpecializations = [{
     name: "Neurologist",
     value: 8
   }
-]
+]    
