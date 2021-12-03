@@ -43,4 +43,13 @@ export class StandardAppointmentComponent implements OnInit {
   selectTerm(selectedRow: any): void{
     this.term = selectedRow;
   }
+
+  scheduleAppointment(): void{
+    let appointment = {
+      "startTime": Date.now,
+      "doctorId": this.doctor.id,
+      "patientId": 1
+    }
+    this._standardAppointmentService.scheduleAppointment(appointment)
+  }
 }
