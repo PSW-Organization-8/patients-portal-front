@@ -15,6 +15,7 @@ import { PatientComponent } from './patient/patient.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { LoginComponent } from './login/login.component';
 import { SurveyComponent } from './survey/survey.component';
+import { StandardAppointmentComponent } from './standard-appointment/standard-appointment.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SurveyComponent } from './survey/survey.component';
     PatientRecordComponent,
     PatientComponent,
     LoginComponent,
-    SurveyComponent
+    SurveyComponent,
+    StandardAppointmentComponent
   ],
   imports: [
     BrowserModule,
