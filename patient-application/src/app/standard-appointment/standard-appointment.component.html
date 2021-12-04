@@ -23,7 +23,7 @@
     <div class="field">
         <label class="label">Doctors</label>
             <div class="select">
-            <select name="doctorSelect" required [(ngModel)]="doctor" #doctorSelect="ngModel">
+            <select name="doctorSelect" required [(ngModel)]="doctor" #doctorSelect="ngModel" (change)="showFreeTerms()">
                 <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}}</option>
             </select>
             </div>
@@ -32,7 +32,26 @@
       <div class="field">
         <label class="label">Free terms</label>
         <div class="control">
-          Free terms container
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Day</th>
+                <th>Hour</th>
+                <th>Minute</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let term of terms">
+              <tr>
+                <td>{{term}}</td>
+                <td>{{term.month}}</td>
+                <td>{{term.day}}</td>
+                <td>{{term.hour}}</td>
+                <td>{{term.minute}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 

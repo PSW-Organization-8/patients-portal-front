@@ -18,4 +18,9 @@ export class StandardAppointmentService {
     return this._http.post<any>(this._url + 'appointment', appointment).subscribe(
       () => { this._router.navigate(['record']); });
   } 
+
+  public getFreeTerms(dayAndDoctor: any) {
+    //return this._http.get<any>(this._url + 'appointment/freeTerms', dayAndDoctor);
+    return this._http.post<any>(this._url + 'appointment/freeTerms', dayAndDoctor)
+  }
 }
