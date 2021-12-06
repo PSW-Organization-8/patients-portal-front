@@ -1,0 +1,63 @@
+<div class="columns is-mobile is-centered mt-5 mb-5">
+    <div class="column is-one-third is-hcentered">
+      <div class="field">
+        <label class="label">Date</label>
+        <div class="control">
+          <input type="date" [ngModel]="startDate | date:'yyyy-MM-dd'"  (ngModelChange)="setDate($event)"  name="startDate">
+        </div>
+      </div>
+  
+      <div class="field">
+        <label class="label">Specialization</label>
+        <div class="control">
+            <div class="select">
+            <select name="specializationSelect" (change)="showDoctors()" [(ngModel)]="selectedSpecialization" #specializationSelect="ngModel">
+                <option *ngFor="let s of specializations">
+                    {{s.name}}
+                </option>
+            </select>
+            </div>
+          </div>
+      </div>
+
+    <div class="field">
+        <label class="label">Doctors</label>
+            <div class="select">
+            <select name="doctorSelect" required [(ngModel)]="doctor" #doctorSelect="ngModel" (change)="showFreeTerms()">
+                <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}}</option>
+            </select>
+            </div>
+      </div>
+
+      <label class="label">Free terms</label>
+      <table class='table is-striped'>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Hour</th>
+            <th>Minute</th>
+          </tr>
+        </thead>
+        <tbody class="is-striped" *ngFor="let term of terms">
+          <tr style="text-align: center">
+            <td>{{term.slice(0,4)}}</td>
+            <td>{{term.slice(5,7)}}</td>
+            <td>{{term.slice(8,10)}}</td>
+            <td><b>{{term.slice(11,13)}}</b></td>
+            <td><b>{{term.slice(14,16)}}</b></td>
+            <td>
+              <button class="button" (click)="selectTerm(term)">CHOOSE</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" (click)="scheduleAppointment()">Schedule</button>
+        </div>
+      </div>
+    </div>
+</div>
