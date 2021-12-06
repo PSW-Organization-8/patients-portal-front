@@ -34,11 +34,7 @@ export class StandardAppointmentComponent implements OnInit {
   }
 
   showFreeTerms(): void{
-    let data = {
-      "startTime": this.startDate,
-      "doctorId" : this.doctor.id
-    };
-    this._standardAppointmentService.getFreeTerms(data).subscribe(terms => this.terms = terms);
+    this._standardAppointmentService.getFreeTerms(this.startDate, this.doctor.id).subscribe(terms => this.terms = terms);
   }
 
   setDate(e: Date) {

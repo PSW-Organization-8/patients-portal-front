@@ -28,11 +28,9 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/sweetalert2/src/sweetalert2.scss",
-              "~bulma-calendar/dist/css/bulma-calendar.min.css"
+              "node_modules/sweetalert2/src/sweetalert2.scss"
             ],
             "scripts": [
-              "~bulma-calendar/dist/js/bulma-calendar.min.js"
             ]
           },
           "configurations": {
