@@ -20,7 +20,6 @@ export class StandardAppointmentService {
   } 
 
   public getFreeTerms(dayAndDoctor: any) {
-    //return this._http.get<any>(this._url + 'appointment/freeTerms', dayAndDoctor);
     return this._http.post<any>(this._url + 'appointment/freeTerms', dayAndDoctor)
   }
 }

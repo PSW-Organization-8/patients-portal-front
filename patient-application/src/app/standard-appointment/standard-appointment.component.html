@@ -3,7 +3,7 @@
       <div class="field">
         <label class="label">Date</label>
         <div class="control">
-          <input name="nameInput" class="input" type="date" required>
+          <input type="date" [ngModel]="startDate | date:'yyyy-MM-dd'"  (ngModelChange)="setDate($event)"  name="startDate">
         </div>
       </div>
   
@@ -11,7 +11,7 @@
         <label class="label">Specialization</label>
         <div class="control">
             <div class="select">
-            <select name="specializationSelect" (change)="showDoctors()" [(ngModel)]="selectedOption" #specializationSelect="ngModel">
+            <select name="specializationSelect" (change)="showDoctors()" [(ngModel)]="selectedSpecialization" #specializationSelect="ngModel">
                 <option *ngFor="let s of specializations">
                     {{s.name}}
                 </option>
@@ -29,31 +29,30 @@
             </div>
       </div>
 
-      <div class="field">
-        <label class="label">Free terms</label>
-        <div class="control">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>Month</th>
-                <th>Day</th>
-                <th>Hour</th>
-                <th>Minute</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let term of terms">
-              <tr>
-                <td>{{term}}</td>
-                <td>{{term.month}}</td>
-                <td>{{term.day}}</td>
-                <td>{{term.hour}}</td>
-                <td>{{term.minute}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <label class="label">Free terms</label>
+      <table class='table is-striped'>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Hour</th>
+            <th>Minute</th>
+          </tr>
+        </thead>
+        <tbody class="is-striped" *ngFor="let term of terms">
+          <tr style="text-align: center">
+            <td>{{term.slice(0,4)}}</td>
+            <td>{{term.slice(5,7)}}</td>
+            <td>{{term.slice(8,10)}}</td>
+            <td><b>{{term.slice(11,13)}}</b></td>
+            <td><b>{{term.slice(14,16)}}</b></td>
+            <td>
+              <button class="button" (click)="selectTerm(term)">CHOOSE</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <div class="field is-grouped">
         <div class="control">
