@@ -1,0 +1,62 @@
+<div class="columns is-mobile is-centered mt-5 mb-5">
+    <div class="column is-one-third is-hcentered">
+        <div class="field">
+            <label class="label">Doctors</label>
+            <div class="select">
+                <select name="doctorSelect" [(ngModel)]="doctor" (change)="getByPriority()">
+                    <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">First date</label>
+            <div class="control">
+            <input type="date" name="firstDate" [ngModel]="firstDate | date:'yyyy-MM-dd'"  (ngModelChange)="setFirstDate($event)" (change)="getByPriority()">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Last date</label>
+            <div class="control">
+            <input type="date" name="lastDate" [ngModel]="lastDate | date:'yyyy-MM-dd'"  (ngModelChange)="setLastDate($event)" (change)="getByPriority()">
+            </div>
+        </div>
+
+        <label class="label">Choose your piority:</label>
+        <div>
+            <input type="radio" id="doctorPriority" name="priority" checked [(ngModel)]="priority" [value]="true" (change)="getByPriority()">
+            <label for="doctorPriority">Doctor</label>
+            <input type="radio" id="datePriority" name="priority" [(ngModel)]="priority" [value]="false" (change)="getByPriority()">
+            <label for="datePriority">Date</label>
+        </div>
+
+        <br>
+
+        <label class="label" style="font-size: 24px;">Free terms</label>
+        <table class='table is-striped'>
+            <thead>
+            <tr style="text-align: center">
+                <th>Date</th>
+                <th>Hour</th>
+                <th>Minute</th>
+            </tr>
+            </thead>
+            <tbody class="is-striped" *ngFor="let term of freeTerms">
+            <tr style="text-align: center">
+                <td style="min-width: 150px;">{{term.slice(8,10)}}-{{term.slice(5,7)}}-{{term.slice(0,4)}}</td>
+                <td>{{term.slice(11,13)}}</td>
+                <td>{{term.slice(14,16)}}</td>
+                <td>
+                    <button class="button" (click)="selectTerm(term)">Choose</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link" (click)="createAppointment()">Schedule</button>
+            </div>
+        </div>
+    </div>
+</div>
