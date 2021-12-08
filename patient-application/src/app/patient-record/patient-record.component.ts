@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../services/patient.service';
 import { DoctorService } from '../services/doctor.service';
 import { AppointmentService } from '../services/appointment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-record',
@@ -14,7 +15,7 @@ export class PatientRecordComponent implements OnInit {
   allergies: any;
   doctor: any;
   patient: any;
-  constructor(private _patientService:PatientService, private _doctorService:DoctorService, private _appointmentService:AppointmentService) { }
+  constructor(private _patientService:PatientService, private _doctorService:DoctorService, private _appointmentService:AppointmentService, private router:Router) { }
 
   ngOnInit(): void {
     this.getPatient();
@@ -42,5 +43,10 @@ export class PatientRecordComponent implements OnInit {
 
   cancelAppointment(appointmentId: number): void{
     this._appointmentService.cancelAppointment(appointmentId).subscribe(() => this.getAppointmets(1))
+  }
+
+  setCurrentAppointment(appointmentId: number): void{
+    this._appointmentService.setCurrentAppointment(appointmentId);
+    this.router.navigate(['/survey']);
   }
 }

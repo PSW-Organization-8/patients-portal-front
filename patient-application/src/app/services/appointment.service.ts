@@ -10,9 +10,21 @@ import { Router } from '@angular/router';
   })
   export class AppointmentService {
     private _url = serverPort;
+    currentAppointmentId:number = 0;
+
     constructor(private http: HttpClient, private router:Router) {}
 
     public cancelAppointment(appointmentId: any) {
       return this.http.put<any>(this._url + 'appointment/' + appointmentId, appointmentId);
+    }
+
+    public surveyAppointment(){
+      alert(this.currentAppointmentId)
+      return this.http.put<any>(this._url + 'appointment/survey/' + this.currentAppointmentId, this.currentAppointmentId);
+    }
+
+    public setCurrentAppointment(appointmentId: number){
+      this.currentAppointmentId = appointmentId;
+      alert(this.currentAppointmentId)
     }
   }
