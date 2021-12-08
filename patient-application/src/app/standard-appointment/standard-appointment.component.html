@@ -3,7 +3,7 @@
       <div class="field">
         <label class="label">Date</label>
         <div class="control">
-          <input type="date" [ngModel]="startDate | date:'yyyy-MM-dd'"  (ngModelChange)="setDate($event)"  name="startDate">
+          <input type="date" [min]="todayDate" [ngModel]="startDate | date:'yyyy-MM-dd'"  (ngModelChange)="setDate($event)"  name="startDate">
         </div>
       </div>
   
@@ -30,7 +30,7 @@
       </div>
 
       <label class="label">Free terms</label>
-      <table class='table is-striped'>
+      <table class="table is-hoverable is-striped">
         <thead>
           <tr>
             <th>Year</th>
@@ -40,7 +40,7 @@
             <th>Minute</th>
           </tr>
         </thead>
-        <tbody class="is-striped" *ngFor="let term of terms">
+        <tbody *ngFor="let term of terms">
           <tr style="text-align: center">
             <td>{{term.slice(0,4)}}</td>
             <td>{{term.slice(5,7)}}</td>
@@ -54,10 +54,8 @@
         </tbody>
       </table>
 
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-link" (click)="scheduleAppointment()">Schedule</button>
-        </div>
+      <div class="control">
+        <button class="button is-link" (click)="scheduleAppointment()">Schedule</button>
       </div>
     </div>
 </div>

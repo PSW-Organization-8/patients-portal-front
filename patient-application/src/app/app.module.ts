@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,11 @@ import { SurveyComponent } from './survey/survey.component';
 import { StandardAppointmentComponent } from './standard-appointment/standard-appointment.component';
 import { PriorityBasedAppointmentComponent } from './priority-based-appointment/priority-based-appointment.component';
 import { DatePipe } from '@angular/common';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -36,10 +41,16 @@ import { DatePipe } from '@angular/common';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,
     RouterModule.forRoot([]),
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    NoopAnimationsModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule
   ],
   providers: [
     RandomNumberGeneratorService,
