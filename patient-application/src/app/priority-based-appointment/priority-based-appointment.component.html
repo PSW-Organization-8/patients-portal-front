@@ -11,14 +11,14 @@
         <div class="field">
             <label class="label">First date</label>
             <div class="control">
-            <input type="date" name="firstDate" [ngModel]="firstDate | date:'yyyy-MM-dd'"  (ngModelChange)="setFirstDate($event)" (change)="getByPriority()">
+                <input  type="date" name="firstDate" [ngModel]="firstDate | date:'yyyy-MM-dd'" [min]="leastDate" (ngModelChange)="setFirstDate($event)" (change)="getByPriority()">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Last date</label>
             <div class="control">
-            <input type="date" name="lastDate" [ngModel]="lastDate | date:'yyyy-MM-dd'"  (ngModelChange)="setLastDate($event)" (change)="getByPriority()">
+                <input type="date" name="lastDate" [ngModel]="lastDate | date:'yyyy-MM-dd'" [min]="leastDate" (ngModelChange)="setLastDate($event)" (change)="getByPriority()">
             </div>
         </div>
 
@@ -26,7 +26,7 @@
         <div>
             <input type="radio" id="doctorPriority" name="priority" checked [(ngModel)]="priority" [value]="true" (change)="getByPriority()">
             <label for="doctorPriority">Doctor</label>
-            <input type="radio" id="datePriority" name="priority" [(ngModel)]="priority" [value]="false" (change)="getByPriority()">
+                <input type="radio" id="datePriority" name="priority" [(ngModel)]="priority" [value]="false" (change)="getByPriority()">
             <label for="datePriority">Date</label>
         </div>
 
@@ -41,13 +41,13 @@
                 <th>Minute</th>
             </tr>
             </thead>
-            <tbody class="is-striped" *ngFor="let term of freeTerms">
+            <tbody class="is-striped" *ngFor="let term of freeTerms; let i = index">
             <tr style="text-align: center">
-                <td style="min-width: 150px;">{{term.slice(8,10)}}-{{term.slice(5,7)}}-{{term.slice(0,4)}}</td>
-                <td>{{term.slice(11,13)}}</td>
-                <td>{{term.slice(14,16)}}</td>
+                <td style="min-width: 150px; vertical-align: middle;">{{term.slice(8,10)}}-{{term.slice(5,7)}}-{{term.slice(0,4)}}</td>
+                <td style="vertical-align: middle;">{{term.slice(11,13)}}</td>
+                <td style="vertical-align: middle;">{{term.slice(14,16)}}</td>
                 <td>
-                    <button class="button" (click)="selectTerm(term)">Choose</button>
+                    <label><input class="appointmentRadio" name="chooseTerm" type="radio" (click)="selectTerm(term, i)"><img class="appointmentImg" id="{{ 'appointmentImgId' + i }}" src="https://drive.google.com/uc?id=1QnEOft9ZNZH4_MM276w5v5gfo9eMKfwz"></label>
                 </td>
             </tr>
             </tbody>
@@ -55,7 +55,7 @@
 
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link" (click)="createAppointment()">Schedule</button>
+                <button class="button is-link" [disabled] (click)="createAppointment()">Schedule</button>
             </div>
         </div>
     </div>
