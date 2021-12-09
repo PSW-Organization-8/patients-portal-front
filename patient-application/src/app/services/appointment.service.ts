@@ -19,12 +19,10 @@ import { Router } from '@angular/router';
     }
 
     public surveyAppointment(){
-      alert(this.currentAppointmentId)
       return this.http.put<any>(this._url + 'appointment/survey/' + this.currentAppointmentId, this.currentAppointmentId);
     }
 
     public setCurrentAppointment(appointmentId: number){
       this.currentAppointmentId = appointmentId;
-      alert(this.currentAppointmentId)
     }
   }
