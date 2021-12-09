@@ -37,9 +37,9 @@
           <div class="content">
             <p class="title has-text-centered">Appointments</p>
             <div *ngFor="let ap of appointments">
-            <p class="subtitle is-primary m-2 p-2 has-text-centered box" *ngIf="ap.state===0"> Scheduled at: {{ap.startTime.slice(0,10)}} 9:30 <button (click)="cancelAppointment(ap.id)" class="button is-rounded is-info is-small ml-1 w3-hover-white"> Cancel the appointment</button></p> 
-            <p class="subtitle is-link m-2 p-2 has-text-centered box" *ngIf="ap.state===1"> Scheduled at: {{ap.startTime.slice(0,10)}} 9:30 AM <button (click)="setCurrentAppointment(ap.id)" *ngIf="!ap.isSurveyed" class="button is-rounded is-info is-small ml-1 w3-hover-white"> Take a survey</button> <button *ngIf="ap.isSurveyed" class="button is-rounded is-info is-small ml-1">Survey done</button></p> 
-            <p class="subtitle is-danger m-2 p-2 has-text-centered box" *ngIf="ap.state===2"> Scheduled at: {{ap.startTime.slice(0,10)}} 9:30 AM Cancelled</p> 
+            <p class="subtitle is-primary m-2 p-2 has-text-centered box" *ngIf="ap.state===0"> Scheduled at: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}} <button (click)="cancelAppointment(ap.id)" class="button is-rounded is-info is-small ml-1 w3-hover-white"> Cancel the appointment</button></p> 
+            <p class="subtitle is-link m-2 p-2 has-text-centered box" *ngIf="ap.state===1"> Scheduled at: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}}<button (click)="setCurrentAppointment(ap.id)" *ngIf="!ap.isSurveyed" class="button is-rounded is-info is-small ml-1 w3-hover-white"> Take a survey</button> <button *ngIf="ap.isSurveyed" class="button is-rounded is-info is-small ml-3"> Appointment surveyed</button></p> 
+            <p class="subtitle is-danger m-2 p-2 has-text-centered box" *ngIf="ap.state===2"> Scheduled at: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}} <button class="button is-rounded is-info is-small ml-3"> Appointment cancelled</button></p> 
             </div>
           </div>
         </article>
