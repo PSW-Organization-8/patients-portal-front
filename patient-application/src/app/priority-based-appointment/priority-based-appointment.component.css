@@ -1,0 +1,13 @@
+.appointmentImg{
+    transition: transform .2s;
+    width: 100px;
+    height: 100px;
+}
+
+.appointmentImg:hover {
+    transform: scale(1.5);
+}
+
+.appointmentRadio{
+    opacity: 0;
+}

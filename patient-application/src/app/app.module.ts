@@ -15,6 +15,9 @@ import { PatientComponent } from './patient/patient.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { LoginComponent } from './login/login.component';
 import { SurveyComponent } from './survey/survey.component';
+import { StandardAppointmentComponent } from './standard-appointment/standard-appointment.component';
+import { PriorityBasedAppointmentComponent } from './priority-based-appointment/priority-based-appointment.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { SurveyComponent } from './survey/survey.component';
     PatientRecordComponent,
     PatientComponent,
     LoginComponent,
-    SurveyComponent
+    SurveyComponent,
+    StandardAppointmentComponent,
+    PriorityBasedAppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,9 @@ import { SurveyComponent } from './survey/survey.component';
     RouterModule.forRoot([]),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [RandomNumberGeneratorService],
+  providers: [
+    RandomNumberGeneratorService,
+    DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

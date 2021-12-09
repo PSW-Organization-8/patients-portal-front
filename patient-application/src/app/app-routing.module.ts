@@ -7,6 +7,8 @@ import { PatientRecordComponent } from './patient-record/patient-record.componen
 import { LoginComponent } from './login/login.component';
 import { PatientComponent } from './patient/patient.component';
 import { SurveyComponent } from './survey/survey.component';
+import { StandardAppointmentComponent } from './standard-appointment/standard-appointment.component';
+import { PriorityBasedAppointmentComponent } from './priority-based-appointment/priority-based-appointment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'patientRegistraion', component: PatientComponent},
   { path: 'patientLogin', component: LoginComponent},
   { path: 'survey', component: SurveyComponent },
+  { path: 'standardAppointment', component: StandardAppointmentComponent},
+  { path: 'priorityBasedAppointment', component: PriorityBasedAppointmentComponent}
 ];
 
 @NgModule({
