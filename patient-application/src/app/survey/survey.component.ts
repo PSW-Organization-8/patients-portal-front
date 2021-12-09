@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AppointmentService } from '../services/appointment.service';
 import { SurveyService } from '../services/survey.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { SurveyService } from '../services/survey.service';
 export class SurveyComponent implements OnInit {
   surveyRatings: Array<any> = [];
 
-  constructor(private _surveyService:SurveyService) { }
+  constructor(private _surveyService:SurveyService, private _appointmentService:AppointmentService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -36,9 +38,6 @@ export class SurveyComponent implements OnInit {
   ]
 
 sendSurvey(): void {
-    
-  
-
 
   if(this.surveyRatings.length < 15){
     Swal.fire({
@@ -49,6 +48,7 @@ sendSurvey(): void {
   }
   else{
     this._surveyService.sendSurveyToServer(this.surveyRatings);
+    this._appointmentService.surveyAppointment().subscribe();
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -65,6 +65,8 @@ sendSurvey(): void {
       icon: 'success',
       title: 'Successfully sent feedback'
     })
+
+    this.router.navigate(['']);
   }
 }
 
