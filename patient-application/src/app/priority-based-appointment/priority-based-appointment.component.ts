@@ -28,6 +28,31 @@ export class PriorityBasedAppointmentComponent implements OnInit {
     this._doctorService.getAllDoctors().subscribe(d => this.doctors = d);
   }
 
+  getDoctorSpecialization(value: any): any{
+    if(value == 0)
+      return "Family physician"
+    else if(value == 1)
+      return "Surgeon"
+    else if(value == 2)
+      return "Internist"
+    else if(value == 3)
+      return "Dermatologist"
+    else if(value == 4)
+      return "Cardiologist"
+    else if(value == 5)
+      return "Otorhinolaryngologist"
+    else if(value == 6)
+      return "Dentist"
+    else if(value == 7)
+      return "Urologist"
+    else if(value == 8)
+      return "Gynecologist"
+    else if(value == 9)
+      return "Neurologist"
+    else
+      return "Undefined"
+  }
+
   getByPriority(): void{
     if(this.firstDate != null && this.lastDate != null && this.doctor != null && this.lastDate >= this.firstDate){
       var theDate = new Date(this.lastDate);

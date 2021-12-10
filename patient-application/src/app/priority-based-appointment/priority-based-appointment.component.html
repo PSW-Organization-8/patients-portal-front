@@ -4,7 +4,7 @@
             <label class="label">Doctors</label>
             <div class="select">
                 <select name="doctorSelect" [(ngModel)]="doctor" (change)="getByPriority()">
-                    <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}}</option>
+                    <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}} ({{getDoctorSpecialization(d.doctorSpecialization)}})</option>
                 </select>
             </div>
         </div>
