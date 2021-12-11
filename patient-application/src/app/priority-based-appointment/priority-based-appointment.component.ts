@@ -55,6 +55,10 @@ export class PriorityBasedAppointmentComponent implements OnInit {
 
   getByPriority(): void{
     if(this.firstDate != null && this.lastDate != null && this.doctor != null && this.lastDate >= this.firstDate){
+      for(var i = 0; i < document.getElementsByClassName('appointmentImg').length; i++){
+        document.getElementsByClassName('appointmentImg').item(i)?.setAttribute('src', 'https://drive.google.com/uc?id=1QnEOft9ZNZH4_MM276w5v5gfo9eMKfwz')
+      }
+      this.selectedTerm = null;
       var theDate = new Date(this.lastDate);
       theDate.setDate(theDate.getDate()+1);
       let lastDateFix =this.datePipe.transform(theDate, 'yyyy-MM-dd');
