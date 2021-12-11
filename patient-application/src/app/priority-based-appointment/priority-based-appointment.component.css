@@ -11,3 +11,9 @@
 .appointmentRadio{
     opacity: 0;
 }
+
+#tableContainer{
+    max-height: 500px;
+    overflow-y: auto;
+    align-items: center;
+}

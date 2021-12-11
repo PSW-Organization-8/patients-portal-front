@@ -33,25 +33,30 @@
         <br>
 
         <label class="label" style="font-size: 24px;">Free terms</label>
-        <table class='table is-striped'>
-            <thead>
-            <tr style="text-align: center">
-                <th>Date</th>
-                <th>Hour</th>
-                <th>Minute</th>
-            </tr>
-            </thead>
-            <tbody class="is-striped" *ngFor="let term of freeTerms; let i = index">
-            <tr style="text-align: center">
-                <td style="min-width: 150px; vertical-align: middle;">{{term.slice(8,10)}}-{{term.slice(5,7)}}-{{term.slice(0,4)}}</td>
-                <td style="vertical-align: middle;">{{term.slice(11,13)}}</td>
-                <td style="vertical-align: middle;">{{term.slice(14,16)}}</td>
-                <td>
-                    <label><input class="appointmentRadio" name="chooseTerm" type="radio" (click)="selectTerm(term, i)"><img class="appointmentImg" id="{{ 'appointmentImgId' + i }}" src="https://drive.google.com/uc?id=1QnEOft9ZNZH4_MM276w5v5gfo9eMKfwz"></label>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <label class="label" style="font-size: 18px;" *ngIf="doctor != null">Specialization {{getDoctorSpecialization(doctor.doctorSpecialization)}}</label>
+        <div id="tableContainer">
+            <table class='table is-striped'>
+                <thead>
+                <tr style="text-align: center">
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Hour</th>
+                    <th>Minute</th>
+                </tr>
+                </thead>
+                <tbody class="is-striped" *ngFor="let term of freeTerms; let i = index">
+                <tr style="text-align: center">
+                    <td style="min-width: 150px; vertical-align: middle;">{{doctor.name}} {{doctor.lastName}}</td>
+                    <td style="min-width: 150px; vertical-align: middle;">{{term.slice(8,10)}}-{{term.slice(5,7)}}-{{term.slice(0,4)}}</td>
+                    <td style="vertical-align: middle;">{{term.slice(11,13)}}</td>
+                    <td style="vertical-align: middle;">{{term.slice(14,16)}}</td>
+                    <td style="vertical-align: middle;">
+                        <label><input class="appointmentRadio" name="chooseTerm" type="radio" (click)="selectTerm(term, i)"><img class="appointmentImg" id="{{ 'appointmentImgId' + i }}" src="https://drive.google.com/uc?id=1QnEOft9ZNZH4_MM276w5v5gfo9eMKfwz"></label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="field is-grouped">
             <div class="control">
