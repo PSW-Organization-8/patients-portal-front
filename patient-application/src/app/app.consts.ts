@@ -1,7 +1,7 @@
 // Constant application variables
+import { environment} from "src/environments/environment";
 
-
-export const serverPort = 'http://localhost:16934/api/';
+export const serverPort = environment.apiHost;
 
 export const doctorSpecializations = [{
     name: "FamilyPhysician",
@@ -18,15 +18,15 @@ export const doctorSpecializations = [{
   {
     name: "Dermatologist",
     value: 3
-  }, 
+  },
   {
     name: "Cardiologist",
     value: 4
-  }, 
+  },
   {
     name: "Otorhinolaryngologist",
     value: 5
-  }, 
+  },
   {
     name: "Urologist",
     value: 6
@@ -39,4 +39,4 @@ export const doctorSpecializations = [{
     name: "Neurologist",
     value: 8
   }
-]    
+]
