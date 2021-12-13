@@ -54,26 +54,6 @@ export class StandardAppointmentComponent implements OnInit {
     (<HTMLInputElement> document.getElementById("nextButton")).disabled = false;
   }
 
-  scheduleAppointment(): void{
-    let appointment = {
-      "startTime": this.term,
-      "doctorId": this.doctor.id,
-      "patientId": 1
-    }
-    this._standardAppointmentService.scheduleAppointment(appointment);
-  }
-
-  showFreeTerms(): void{
-    let data = {
-      "startTime": this.startDate,
-      "doctorId" : this.doctor.id
-    };
-    this._standardAppointmentService.getFreeTerms(data).subscribe(terms => this.terms = terms);
-  }
-
-  setDate(e: Date) {
-    this.startDate = e;
-  }
   selectTerm(selectedRow: any): void{
     this.term = selectedRow;
   }
