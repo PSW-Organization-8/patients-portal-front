@@ -21,6 +21,8 @@ export class PriorityBasedAppointmentComponent implements OnInit {
   selectedTerm : any;
   firstDateClass : string = "input";
   leastDate:string = formatDate(new Date().setDate(new Date().getDate() + 1), 'yyyy-MM-dd', 'en_US');
+  tableDoctor: any;
+  doctorId: any;
 
   constructor(private _doctorService: DoctorService, private datePipe: DatePipe, private _appointmentService: StandardAppointmentService) { }
 
@@ -72,8 +74,9 @@ export class PriorityBasedAppointmentComponent implements OnInit {
       })
   }
 
-  selectTerm(value: any, index: any) : void{
+  selectTerm(value: any, index: any, selectedDoctorId: any) : void{
     this.selectedTerm = value;
+    this.doctorId = selectedDoctorId;
     for(var i = 0; i < document.getElementsByClassName('appointmentImg').length; i++){
       document.getElementsByClassName('appointmentImg').item(i)?.setAttribute('src', 'https://drive.google.com/uc?id=1QnEOft9ZNZH4_MM276w5v5gfo9eMKfwz')
     }
@@ -99,7 +102,7 @@ export class PriorityBasedAppointmentComponent implements OnInit {
     else{
       let appointment = {
         "startTime": this.selectedTerm,
-        "doctorId": this.doctor.id,
+        "doctorId": this.doctorId,
         "patientId": 1
       }
       this._appointmentService.scheduleAppointment(appointment);
