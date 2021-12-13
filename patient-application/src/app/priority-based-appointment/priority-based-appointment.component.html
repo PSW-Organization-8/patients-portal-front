@@ -46,12 +46,12 @@
                 </thead>
                 <tbody class="is-striped" *ngFor="let term of freeTerms; let i = index">
                 <tr style="text-align: center">
-                    <td style="min-width: 150px; vertical-align: middle;">{{doctor.name}} {{doctor.lastName}}</td>
-                    <td style="min-width: 150px; vertical-align: middle;">{{term.slice(8,10)}}-{{term.slice(5,7)}}-{{term.slice(0,4)}}</td>
-                    <td style="vertical-align: middle;">{{term.slice(11,13)}}</td>
-                    <td style="vertical-align: middle;">{{term.slice(14,16)}}</td>
+                    <td style="min-width: 150px; vertical-align: middle;">{{term.item3}}</td>
+                    <td style="min-width: 150px; vertical-align: middle;">{{term.item1.slice(8,10)}}-{{term.item1.slice(5,7)}}-{{term.item1.slice(0,4)}}</td>
+                    <td style="vertical-align: middle;">{{term.item1.slice(11,13)}}</td>
+                    <td style="vertical-align: middle;">{{term.item1.slice(14,16)}}</td>
                     <td style="vertical-align: middle;">
-                        <label><input class="appointmentRadio" name="chooseTerm" type="radio" (click)="selectTerm(term, i)"><img class="appointmentImg" id="{{ 'appointmentImgId' + i }}" src="https://drive.google.com/uc?id=1QnEOft9ZNZH4_MM276w5v5gfo9eMKfwz"></label>
+                        <label><input class="appointmentRadio" name="chooseTerm" type="radio" (click)="selectTerm(term.item1, i, term.item2)"><img class="appointmentImg" id="{{ 'appointmentImgId' + i }}" src="https://drive.google.com/uc?id=1QnEOft9ZNZH4_MM276w5v5gfo9eMKfwz"></label>
                     </td>
                 </tr>
                 </tbody>
