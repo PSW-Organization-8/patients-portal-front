@@ -29,9 +29,18 @@ export class LoginComponent implements OnInit {
     }
     else{
       this._loginService.sendLoginFormToServer(this.username, this.password).subscribe(f => 
-        {this.token = f.token
+        {
+          this.token = f.token
           localStorage.setItem('token',JSON.stringify(f.token))
-          //this.router.navigate(['']);
+          this.router.navigate(['/record'])
+          .then(() => {
+            window.location.reload();
+          });
+        },
+        (error) => {
+          if(error.status != 200){
+          alert("Wrong username or password!");
+          }
         });
     }
   }

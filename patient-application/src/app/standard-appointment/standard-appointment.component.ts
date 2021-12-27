@@ -3,6 +3,8 @@ import { StandardAppointmentService } from '../services/standard-appointment.ser
 import { doctorSpecializations } from '../app.consts';
 import { formatDate } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { PatientService } from '../services/patient.service';
 @Component({
   selector: 'app-standard-appointment',
   templateUrl: './test.html',
@@ -18,13 +20,33 @@ export class StandardAppointmentComponent implements OnInit {
   selectedSpecialization: string = "";
   specializations = doctorSpecializations;
   todayDate:string = formatDate(new Date(), 'yyyy-MM-dd', 'en_US');
+  patient: any;
 
 
   validDate: boolean = false;
 
-  constructor(private _standardAppointmentService: StandardAppointmentService) { }
+  constructor(private _standardAppointmentService: StandardAppointmentService, private _loginService:LoginService, private _patientService:PatientService) { }
 
   ngOnInit(): void {
+    this.getLoggedUser()
+  }
+
+  getLoggedUser(){
+    let token = localStorage.getItem('token');
+    if(token === null)
+      token = ""
+    this._loginService.getLoggedUserFromServer(token).subscribe(f=> {
+      this.getPatient(f.username)
+    }
+    );
+  }
+
+  getPatient(username:any): void{
+    this._patientService.getPatientByUsernameFromServer(username).subscribe(
+      (successData: any) => {  this.patient = successData },
+      () => {},
+      () => {}
+      );
   }
 
   showDoctors(): void {
@@ -37,11 +59,12 @@ export class StandardAppointmentComponent implements OnInit {
     let appointment = {
       "startTime": this.term,
       "doctorId": this.doctor.id,
-      "patientId": 1
+      "patientId": this.patient.id
     }
-    this._standardAppointmentService.scheduleAppointment(appointment);
-
-    
+    let token = localStorage.getItem('token');
+    if(token === null)
+      token = ""
+    this._standardAppointmentService.scheduleAppointment(appointment, token);
   }
 
   showFreeTerms(): void{

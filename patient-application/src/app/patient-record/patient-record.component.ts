@@ -3,6 +3,7 @@ import { PatientService } from '../services/patient.service';
 import { DoctorService } from '../services/doctor.service';
 import { AppointmentService } from '../services/appointment.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-patient-record',
@@ -15,17 +16,28 @@ export class PatientRecordComponent implements OnInit {
   allergies: any;
   doctor: any;
   patient: any;
-  constructor(private _patientService:PatientService, private _doctorService:DoctorService, private _appointmentService:AppointmentService, private router:Router) { }
+  patientUsername: any;
+  constructor(private _patientService:PatientService, private _doctorService:DoctorService, private _appointmentService:AppointmentService, private router:Router, private _loginService:LoginService) { }
 
   ngOnInit(): void {
-    this.getPatient();
+    this.getLoggedUser();
   }
 
-  getPatient(): void{
-    this._patientService.getPatientFromServer(1).subscribe(
+  getLoggedUser(){
+    let token = localStorage.getItem('token');
+    if(token === null)
+      token = ""
+    this._loginService.getLoggedUserFromServer(token).subscribe(f=> {
+      this.getPatient(f.username)
+    }
+    );
+  }
+
+  getPatient(username:any): void{
+    this._patientService.getPatientByUsernameFromServer(username).subscribe(
       (successData: any) => {  this.patient = successData },
       () => {},
-      () => { this.getDoctor(this.patient.id), this.getAllergies(), this.getAppointmets(this.patient.id) }
+      () => { this.getDoctor(this.patient.id), this.getPatientAllergens(this.patient.id), this.getAppointmets(this.patient.id) }
       );
   }
 
@@ -35,6 +47,10 @@ export class PatientRecordComponent implements OnInit {
 
   getAllergies(){
     this._patientService.getAllergens().subscribe(a => this.allergies = a)
+  }
+
+  getPatientAllergens(patientId: number){
+    this._patientService.getPatientsAllergens(patientId).subscribe(a => this.allergies = a)
   }
 
   getAppointmets(id: number): void {

@@ -4,20 +4,20 @@
         <div class="field">
             <label class="label">Username</label>
             <div class="control">
-              <input class="input" [(ngModel)]="username" type="text">
+              <input id="usernameField" class="input" [(ngModel)]="username" type="text">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input class="input" [(ngModel)]="password" type="password">
+              <input id="passwordField" class="input" [(ngModel)]="password" type="password">
             </div>
         </div>
 
         <div class="field is-grouped">
             <div class="control">
-              <button (click)="login()" class="button is-link">Log in</button>
+              <button id="loginButton" (click)="login()" class="button is-link">Log in</button>
             </div>
           </div>
 

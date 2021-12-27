@@ -5,6 +5,7 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { serverPort } from '../app.consts';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable({
     providedIn: 'root',
@@ -17,12 +18,33 @@ import { HttpHeaders } from '@angular/common/http';
       return this.http.get<any>(this._url + 'patient/' + patientId);
     }
 
+    public getPatientByUsernameFromServer(username: string): any {
+      return this.http.get<any>(this._url + 'patient/getByUsername/' + username);
+    }
+
     public getFreeDoctors() {
       return this.http.get<any>(this._url + 'doctor');
     }
 
     public getAllergens() {
       return this.http.get<any>(this._url + 'allergen');
+    }
+
+    public getAllUsernames() {
+      return this.http.get<any>(this._url + 'patient/getAllUsernames');
+    }
+
+    public getAllEmails() {
+      return this.http.get<any>(this._url + 'patient/getAllEmails');
+    }
+
+    public getPatientsAllergens(patientId: number) {
+      let token = localStorage.getItem("token")
+      if(token ==null)
+        token=""
+      let result = token.slice(1,-1);
+      let header = new HttpHeaders().set("Authorization", 'Bearer ' + result);
+      return this.http.get<any>(this._url + 'allergen/getPatientsAllergens?id=' + patientId, {headers:header});
     }
 
     public getPatientAppointments(patientId: number) {
@@ -34,7 +56,7 @@ import { HttpHeaders } from '@angular/common/http';
       return this.http.get<any>(this._url + 'appointment/' + patientId, {headers:header});
     }
 
-    public registerPatient(name:string, lastName:string, username:string, password:string, jmbg:string, email:string, phone:string, selectedAllergens:any, dateOfBirth:string, bloodType:string, country:string, city:string, address: string, doctor: any){
+    public registerPatient(name:string, lastName:string, username:string, password:string, jmbg:string, email:string, phone:string, selectedAllergens:any, dateOfBirth:string, bloodType:string, country:string, city:string, address: string, doctor: any, picture: string){
       let patient = {
         Name: name,
         LastName: lastName,
@@ -51,8 +73,9 @@ import { HttpHeaders } from '@angular/common/http';
         Allergens: selectedAllergens,
         DoctorId: doctor.id,
         IsActivated: false,
+        Picture: picture
       };
-      return this.http.post<any>(this._url + 'patient', patient).subscribe( () => {
+      this.http.post<any>(this._url + 'patient', patient).subscribe( () => {
         this.router.navigate(['']);
         }
       );

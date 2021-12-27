@@ -2,6 +2,8 @@ import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DoctorService } from '../services/doctor.service';
+import { LoginService } from '../services/login.service';
+import { PatientService } from '../services/patient.service';
 import { StandardAppointmentService } from '../services/standard-appointment.service';
 import { StandardAppointmentComponent } from '../standard-appointment/standard-appointment.component';
 
@@ -23,12 +25,33 @@ export class PriorityBasedAppointmentComponent implements OnInit {
   leastDate:string = formatDate(new Date().setDate(new Date().getDate() + 1), 'yyyy-MM-dd', 'en_US');
   tableDoctor: any;
   doctorId: any;
+  patient:any;
 
-  constructor(private _doctorService: DoctorService, private datePipe: DatePipe, private _appointmentService: StandardAppointmentService) { }
+  constructor(private _doctorService: DoctorService, private _patientService:PatientService, private datePipe: DatePipe, private _appointmentService: StandardAppointmentService, private _loginService:LoginService) { }
 
   ngOnInit(): void {
+    this.getLoggedUser();
     this._doctorService.getAllDoctors().subscribe(d => this.doctors = d);
   }
+
+  getLoggedUser(){
+    let token = localStorage.getItem('token');
+    if(token === null)
+      token = ""
+    this._loginService.getLoggedUserFromServer(token).subscribe(f=> {
+      this.getPatient(f.username)
+    }
+    );
+  }
+
+  getPatient(username:any): void{
+    this._patientService.getPatientByUsernameFromServer(username).subscribe(
+      (successData: any) => {  this.patient = successData },
+      () => {},
+      () => {}
+      );
+  }
+
 
   getDoctorSpecialization(value: any): any{
     if(value == 0)
@@ -64,7 +87,12 @@ export class PriorityBasedAppointmentComponent implements OnInit {
       var theDate = new Date(this.lastDate);
       theDate.setDate(theDate.getDate()+1);
       let lastDateFix =this.datePipe.transform(theDate, 'yyyy-MM-dd');
-      this._doctorService.getDatesByPriority(this.doctor, this.firstDate, lastDateFix, this.priority).subscribe(a => this.freeTerms = a)
+
+      let token = localStorage.getItem('token');
+      if(token === null)
+        token = ""
+
+      this._doctorService.getDatesByPriority(this.doctor, this.firstDate, lastDateFix, this.priority, token).subscribe(a => this.freeTerms = a)
     }
     if(this.lastDate < this.firstDate)
       Swal.fire({
@@ -103,9 +131,12 @@ export class PriorityBasedAppointmentComponent implements OnInit {
       let appointment = {
         "startTime": this.selectedTerm,
         "doctorId": this.doctorId,
-        "patientId": 1
+        "patientId": this.patient.id
       }
-      this._appointmentService.scheduleAppointment(appointment);
+      let token = localStorage.getItem('token');
+      if(token === null)
+        token = ""
+      this._appointmentService.scheduleAppointment(appointment, token);
       Swal.fire({
         icon: 'success',
         title: 'Success',
