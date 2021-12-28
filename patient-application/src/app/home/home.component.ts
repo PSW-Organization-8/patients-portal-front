@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
 
   getLoggedUser(){
     let token = localStorage.getItem('token');
-   // let header = new HttpHeaders().set("Authorization", token);
+    if(token === null)
+      token = ""
     this._loginService.getLoggedUserFromServer(token).subscribe(f=> {
       alert(f.username)
 

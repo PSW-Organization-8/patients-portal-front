@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { serverPort } from '../app.consts';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
@@ -13,7 +14,8 @@ import { Router } from '@angular/router';
     constructor(private http: HttpClient, private router:Router) {}
 
     public getLoggedUserFromServer(token:any): Observable<any> {
-        return this.http.get<any>(this._url + 'patient/login');
+      let header = new HttpHeaders().set("Authorization", token);
+        return this.http.get<any>(this._url + 'patient/login', {headers:header});
     }
 
     public sendLoginFormToServer(username: any, password: any) {
