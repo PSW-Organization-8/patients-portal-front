@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
     private _url = serverPort;
     constructor(private http: HttpClient, private router:Router) {}
 
-    public getSurveyFromServer(): Observable<any> {
-        return this.http.get<any>(this._url + 'survey');
+    public getLoggedUserFromServer(token:any): Observable<any> {
+        return this.http.get<any>(this._url + 'patient/login');
     }
 
     public sendLoginFormToServer(username: any, password: any) {

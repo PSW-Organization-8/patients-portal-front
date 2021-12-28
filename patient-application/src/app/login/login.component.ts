@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   password:string = "";
   token:any;
 
-  constructor(private _loginService:LoginService) { }
+  constructor(private _loginService:LoginService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -27,9 +28,11 @@ export class LoginComponent implements OnInit {
       })
     }
     else{
-      this._loginService.sendLoginFormToServer(this.username, this.password).subscribe(f => this.token = f);
-      alert(this.token)
-      localStorage.setItem('token',JSON.stringify(this.token))
+      this._loginService.sendLoginFormToServer(this.username, this.password).subscribe(f => 
+        {this.token = f.token
+          localStorage.setItem('token',JSON.stringify(f.token))
+          //this.router.navigate(['']);
+        });
     }
   }
 }
