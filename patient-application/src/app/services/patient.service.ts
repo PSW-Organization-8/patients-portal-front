@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { serverPort } from '../app.consts';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
@@ -25,7 +26,12 @@ import { Router } from '@angular/router';
     }
 
     public getPatientAppointments(patientId: number) {
-      return this.http.get<any>(this._url + 'appointment/' + patientId);
+      let token = localStorage.getItem("token")
+      if(token ==null)
+        token=""
+      let result = token.slice(1,-1);
+      let header = new HttpHeaders().set("Authorization", 'Bearer ' + result);
+      return this.http.get<any>(this._url + 'appointment/' + patientId, {headers:header});
     }
 
     public registerPatient(name:string, lastName:string, username:string, password:string, jmbg:string, email:string, phone:string, selectedAllergens:any, dateOfBirth:string, bloodType:string, country:string, city:string, address: string, doctor: any){

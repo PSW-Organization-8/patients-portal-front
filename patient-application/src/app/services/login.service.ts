@@ -14,7 +14,8 @@ import { HttpHeaders } from '@angular/common/http';
     constructor(private http: HttpClient, private router:Router) {}
 
     public getLoggedUserFromServer(token:any): Observable<any> {
-      let header = new HttpHeaders().set("Authorization", token);
+      let result = token.slice(1,-1);
+      let header = new HttpHeaders().set("Authorization", 'Bearer ' + result);
         return this.http.get<any>(this._url + 'patient/login', {headers:header});
     }
 
@@ -23,10 +24,6 @@ import { HttpHeaders } from '@angular/common/http';
             username: username,
             password: password,
           };
-
-          let params = new HttpParams()
-            .append('username', username)
-            .append('password', password)
           return this.http.post<any>(this._url + 'login', loginForm);
     }
 }
