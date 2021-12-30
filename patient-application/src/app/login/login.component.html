@@ -2,22 +2,22 @@
     <div class="column is-one-third is-hcentered">
     
         <div class="field">
-            <label class="label">Email</label>
+            <label class="label">Username</label>
             <div class="control">
-              <input class="input" type="text">
+              <input class="input" [(ngModel)]="username" type="text">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input class="input" type="password">
+              <input class="input" [(ngModel)]="password" type="password">
             </div>
         </div>
 
         <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link">Log in</button>
+              <button (click)="login()" class="button is-link">Log in</button>
             </div>
           </div>
 

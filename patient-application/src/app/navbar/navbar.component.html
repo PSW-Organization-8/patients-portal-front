@@ -1,0 +1,53 @@
+<nav class="navbar is-info has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item w3-hover-white" href="">
+        <img src="assets/logo_white.png">
+      </a>
+  
+      <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item w3-hover-white"  href="/record">
+          Patient Record
+        </a>
+  
+        <a class="navbar-item w3-hover-white" href="/feedback">
+            Leave Feedback
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link w3-hover-white">
+            Make an appointment
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/standardAppointment">
+              StandardAppointment
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" href="/priorityBasedAppointment">
+              Advanced appointment
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="navbar-item is-small is-hoverable" href="">
+                <img src="assets/sign_out.png" width="25" height="30">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script src="assets/js/burger.js"></script>

@@ -23,6 +23,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     LoginComponent,
     SurveyComponent,
     StandardAppointmentComponent,
-    PriorityBasedAppointmentComponent
+    PriorityBasedAppointmentComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
