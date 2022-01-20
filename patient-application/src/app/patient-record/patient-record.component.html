@@ -25,7 +25,7 @@
             <p class="title has-text-centered">Appointments</p>
             <div *ngFor="let ap of appointments">
               <p class="subtitle m-1 is-primary has-text-centered box" *ngIf="ap.state===0"> Appointment incoming at: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}} <button id="cancelAppointmentButton" (click)="cancelAppointment(ap.id)" class="button is-rounded is-info is-small ml-1 w3-hover-white">Cancel</button></p> 
-              <p class="subtitle m-1 is-link has-text-centered box" *ngIf="ap.state===1"> Appointment completed: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}}<button (click)="setCurrentAppointment(ap.id)" *ngIf="!ap.isSurveyed" class="button is-rounded is-info is-small ml-2 mr-2 w3-hover-white">Survey</button> <label *ngIf="ap.isSurveyed"> Surveyed!</label></p> 
+              <p class="subtitle m-1 is-link has-text-centered box" *ngIf="ap.state===1"> Appointment completed: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}}<button (click)="getMedicalReport(ap.id)" class="button is-rounded is-info is-small ml-2 mr-2 w3-hover-white"> Medical Report </button> <button (click)="setCurrentAppointment(ap.id)" *ngIf="!ap.isSurveyed" class="button is-rounded is-info is-small ml-2 mr-2 w3-hover-white">Survey</button> <label *ngIf="ap.isSurveyed"> Surveyed!</label></p> 
               <p id="appointmentCanceledButton" class="subtitle m-1 is-danger has-text-centered box" *ngIf="ap.state===2"> Appointment at: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}} Cancelled </p> 
             </div>
           </div>

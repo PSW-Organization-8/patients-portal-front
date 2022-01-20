@@ -24,6 +24,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MedicalReportComponent } from './medical-report/medical-report.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     SurveyComponent,
     StandardAppointmentComponent,
     PriorityBasedAppointmentComponent,
-    NavbarComponent
+    NavbarComponent,
+    MedicalReportComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDialogModule
   ],
   providers: [
     RandomNumberGeneratorService,
