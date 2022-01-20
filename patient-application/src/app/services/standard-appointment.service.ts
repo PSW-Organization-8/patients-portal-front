@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { serverPort } from '../app.consts';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -15,8 +15,10 @@ export class StandardAppointmentService {
     return this._http.get<any>(this._url + 'doctor/spec/' + specialization);
   }
 
-  public scheduleAppointment(appointment: any) {
-    return this._http.post<any>(this._url + 'appointment/createNew', appointment).subscribe(
+  public scheduleAppointment(appointment: any, token:any) {
+    let result = token.slice(1,-1);
+      let header = new HttpHeaders().set("Authorization", 'Bearer ' + result);
+    return this._http.post<any>(this._url + 'appointment/createNew', appointment, {headers:header}).subscribe(
       () =>
       {
         const Toast = Swal.mixin({

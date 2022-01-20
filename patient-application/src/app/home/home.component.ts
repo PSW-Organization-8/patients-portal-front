@@ -26,17 +26,16 @@ export class HomeComponent implements OnInit {
     if(token === null)
       token = ""
     this._loginService.getLoggedUserFromServer(token).subscribe(f=> {
-      alert(f.username)
-
+      //alert(f.username)
     });
 
   }
 
-  getApprovedFeedback(): void{
+  getApprovedFeedback(){
     this._feedbackService.getApprovedFeedbackFromServer().subscribe(f => this.approvedFeedback = f);
   }
 
-  getPatient(): void{
+  getPatient(){
     this._patientService.getPatientFromServer(1).subscribe((p: any) => this.patient = p);
   }
 }

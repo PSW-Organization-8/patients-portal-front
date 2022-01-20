@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AppointmentService } from '../services/appointment.service';
+import { LoginService } from '../services/login.service';
+import { PatientService } from '../services/patient.service';
 import { SurveyService } from '../services/survey.service';
 
 @Component({
@@ -11,11 +13,32 @@ import { SurveyService } from '../services/survey.service';
 })
 export class SurveyComponent implements OnInit {
   surveyRatings: Array<any> = [];
+  patient: any;
 
-  constructor(private _surveyService:SurveyService, private _appointmentService:AppointmentService, private router:Router) { }
+  constructor(private _surveyService:SurveyService, private _appointmentService:AppointmentService, private router:Router, private _patientService:PatientService, private _loginService:LoginService) { }
 
   ngOnInit(): void {
+    this.getLoggedUser();
   }
+
+  getLoggedUser(){
+    let token = localStorage.getItem('token');
+    if(token === null)
+      token = ""
+    this._loginService.getLoggedUserFromServer(token).subscribe(f=> {
+      this.getPatient(f.username)
+    }
+    );
+  }
+
+  getPatient(username:any): void{
+    this._patientService.getPatientByUsernameFromServer(username).subscribe(
+      (successData: any) => {  this.patient = successData },
+      () => {},
+      () => {}
+      );
+  }
+
 
   surveys = [
     {id: 1, text:'How would you rate doctors professionalism?', category: 0},
@@ -47,7 +70,10 @@ sendSurvey(): void {
     })
   }
   else{
-    this._surveyService.sendSurveyToServer(this.surveyRatings);
+    let token = localStorage.getItem('token');
+    if(token === null)
+      token = ""
+    this._surveyService.sendSurveyToServer(this.surveyRatings, this.patient, token);
     this._appointmentService.surveyAppointment().subscribe();
     const Toast = Swal.mixin({
       toast: true,
@@ -68,6 +94,39 @@ sendSurvey(): void {
 
     this.router.navigate(['']);
   }
+}
+
+allRated():void{
+  for(let q of this.surveys){
+    let question = {
+      id: q.id,
+      text: q.text,
+      value: 5,
+      category: q.category
+    };
+    this.surveyRatings.push(question);
+  }
+  let token = localStorage.getItem('token');
+  if(token === null)
+    token = ""
+  this._surveyService.sendSurveyToServer(this.surveyRatings, this.patient, token);
+  this._appointmentService.surveyAppointment().subscribe();
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  Toast.fire({
+    icon: 'success',
+    title: 'Successfully sent feedback'
+  })
+  this.router.navigate(['']);
 }
 
 rateIt(value: number, questionObject: any): void{

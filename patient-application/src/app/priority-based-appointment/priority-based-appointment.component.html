@@ -1,5 +1,5 @@
-<div class="columns is-mobile is-centered mt-5 mb-5">
-    <div class="column is-one-third is-hcentered">
+<div class="columns is-mobile is-centered m-5">
+    <div class="column is-5 is-hcentered is-primary" style="height: 800px;">
         <div class="field">
             <label class="label">Doctors</label>
             <div class="select">
@@ -29,9 +29,8 @@
                 <input type="radio" id="datePriority" name="priority" [(ngModel)]="priority" [value]="false" (change)="getByPriority()">
             <label for="datePriority">Date</label>
         </div>
-
-        <br>
-
+    </div>
+    <div class="column is-5 ml-5 is-link" style="height: 800px;">
         <label class="label" style="font-size: 24px;">Free terms</label>
         <label class="label" style="font-size: 18px;" *ngIf="doctor != null">Specialization {{getDoctorSpecialization(doctor.doctorSpecialization)}}</label>
         <div id="tableContainer">
@@ -59,8 +58,8 @@
         </div>
 
         <div class="field is-grouped">
-            <div class="control">
-                <button class="button is-link" [disabled] (click)="createAppointment()">Schedule</button>
+            <div class="control m-5">
+                <button class="button w3-black w3-hover-white" [disabled] (click)="createAppointment()">Schedule</button>
             </div>
         </div>
     </div>

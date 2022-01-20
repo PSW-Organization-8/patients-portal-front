@@ -18,3 +18,11 @@
     overflow-y: auto;
     align-items: center;
 }
+
+.is-primary{
+    background-image: linear-gradient(to right, #5688C7 , #a6c3e9) !important;
+}
+
+.is-link{
+        background-image: linear-gradient(to right, #a6c3e9 , #dbe0e7) !important;
+}

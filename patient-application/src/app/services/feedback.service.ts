@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { serverPort } from '../app.consts';
 import { Router } from '@angular/router';
@@ -16,15 +16,17 @@ export class RandomNumberGeneratorService {
     return this.http.get<any>(this._url + 'feedback');
   }
 
-  public sendFeedbackToServer(content: string, anonymous: boolean, publishable: boolean): void {
+  public sendFeedbackToServer(content: string, anonymous: boolean, publishable: boolean, token:any, patient:any): void {
     let feedback = {
       Content: content,
       IsAnonymous: anonymous,
       IsPublishable: publishable,
       IsApproved: false,
-      PatientId: 1,
+      PatientId: patient.id,
     };
-    this.http.post<any>(this._url + 'feedback', feedback).subscribe( () => {
+    let result = token.slice(1,-1);
+      let header = new HttpHeaders().set("Authorization", 'Bearer ' + result);
+    this.http.post<any>(this._url + 'feedback', feedback, {headers:header}).subscribe( () => {
       this.router.navigate(['']);
     }
     );
