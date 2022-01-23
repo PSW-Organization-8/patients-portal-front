@@ -2,7 +2,7 @@
   <mat-step class="test" [editable]=true>
     <ng-template matStepLabel><p class="label">Choose date</p></ng-template>
     <div class="content m-5 p-5">
-      <input type="date" [min]="todayDate" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="setDate($event)"  name="startDate" required>
+      <input type="date" [min]="todayDate"  [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="setDate($event)"  name="startDate" required>
     </div>
     <div class="content m-5 p-5">
       <!--I param: 3->next dugme, 4 -> back dugme II param: redni broj dugmeta-->
@@ -12,7 +12,7 @@
   <mat-step [editable]=true>
     <ng-template matStepLabel><p class="label">Choose specialization</p></ng-template>
     <div class="content m-5 p-5">
-      <select name="specializationSelect" (change)="showDoctors()" [(ngModel)]="selectedSpecialization" #specializationSelect="ngModel" required>
+      <select name="specializationSelect" (change)="showDoctors()" [(ngModel)]="selectedSpecialization" (ngModelChange)="sendSpecializationEvent()" #specializationSelect="ngModel" required>
         <option *ngFor="let s of specializations">
             {{s.name}}
         </option>
