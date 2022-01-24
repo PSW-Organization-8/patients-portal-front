@@ -13,4 +13,9 @@ import { HttpClient } from '@angular/common/http';
     public sendEvent(event: any){
       return this.http.post<any>(this._url + 'event', event)
     }
+
+    public getPromotions(): any {
+      return this.http.get<any>(this._url + 'medcation/promotions');
+    }
+
   }

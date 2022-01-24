@@ -27,6 +27,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MedicalReportComponent } from './medical-report/medical-report.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +46,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     PriorityBasedAppointmentComponent,
     NavbarComponent,
     MedicalReportComponent
+
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+
+    MatCarouselModule.forRoot(),
+    
+    NgbModule
   ],
   providers: [
     RandomNumberGeneratorService,
