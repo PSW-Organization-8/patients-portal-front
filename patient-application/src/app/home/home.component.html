@@ -2,6 +2,34 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div>
+
+        <div class='container-fluid'>  
+          <div class='col-12'>  
+              <ngb-carousel>  
+                  <ng-template ngbSlide *ngFor = "let promotion of promotions; let index = index">
+                      <h4 style="color: black; text-align: center;">{{promotion.title}}</h4>
+                      <hr style="color: #000000;">  
+                      <img class="centerIt" style="height: 400px; width: 850px; padding-left: 10%;" *ngIf = "index %3 == 2" src="assets/1.jpg" alt="Delhi Metro">
+                      <img class="centerIt" style="height: 400px; width: 850px; padding-left: 10%;" *ngIf = "index %3 == 1" src="assets/2.jpg" alt="Delhi Metro">  
+                      <img class="centerIt" style="height: 400px; width: 850px; padding-left: 10%;" *ngIf = "index %3 == 0" src="assets/3.jpg" alt="Delhi Metro">    
+                      <div style="margin-top: 30px; border-radius: 40%; border: 1px; border-color: black; border-style: solid; margin-left: 30%; margin-right: 30%;">
+                          
+                          <h4 style="color: black; text-align: center;">{{promotion.description}}</h4>  
+                      </div>  
+                  </ng-template>  
+              </ngb-carousel>  
+          </div>  
+        
+      </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- First Grid -->
   <div class="w3-row-padding w3-padding-64 w3-container">
     <div class="w3-content">

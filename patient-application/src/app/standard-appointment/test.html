@@ -2,36 +2,37 @@
   <mat-step class="test" [editable]=true>
     <ng-template matStepLabel><p class="label">Choose date</p></ng-template>
     <div class="content m-5 p-5">
-      <input type="date" [min]="todayDate" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="setDate($event)"  name="startDate" required>
+      <input type="date" [min]="todayDate"  [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="setDate($event)"  name="startDate" required>
     </div>
     <div class="content m-5 p-5">
-      <button id="nextButton" class="button is-info w3-hover-light-blue mr-5" matStepperNext disabled>Next</button>
+      <!--I param: 3->next dugme, 4 -> back dugme II param: redni broj dugmeta-->
+      <button id="nextButton" (click)="sendEvent(3, 0)" class="button is-info w3-hover-light-blue mr-5" matStepperNext disabled>Next</button> 
     </div>
   </mat-step>
   <mat-step [editable]=true>
     <ng-template matStepLabel><p class="label">Choose specialization</p></ng-template>
     <div class="content m-5 p-5">
-      <select name="specializationSelect" (change)="showDoctors()" [(ngModel)]="selectedSpecialization" #specializationSelect="ngModel" required>
+      <select name="specializationSelect" (change)="showDoctors()" [(ngModel)]="selectedSpecialization" (ngModelChange)="sendSpecializationEvent()" #specializationSelect="ngModel" required>
         <option *ngFor="let s of specializations">
             {{s.name}}
         </option>
       </select>
     </div>
     <div class="content m-5 p-5">
-      <button class="button is-info w3-hover-light-blue mr-5" matStepperPrevious>Back</button>
-      <button id="nextButton1" class="button is-info w3-hover-light-blue" matStepperNext disabled>Next</button>
+      <button class="button is-info w3-hover-light-blue mr-5" (click)="sendEvent(4, 1)" matStepperPrevious>Back</button>
+      <button id="nextButton1" (click)="sendEvent(3, 1)" class="button is-info w3-hover-light-blue" matStepperNext disabled>Next</button>
     </div>
   </mat-step>
   <mat-step [editable]=true>
     <ng-template matStepLabel><p class="label">Choose doctor</p></ng-template>
     <div class="content m-5 p-5"> 
-      <select name="doctorSelect" required [(ngModel)]="doctor" #doctorSelect="ngModel" (change)="showFreeTerms()"> 
+      <select name="doctorSelect" selectedIndex = -1 required [(ngModel)]="doctor" #doctorSelect="ngModel" (change)="showFreeTerms()"> 
         <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}}</option>
       </select>
     </div>
     <div class="content m-5 p-5">
-      <button class="button is-info w3-hover-light-blue mr-5" matStepperPrevious>Back</button>
-      <button id="nextButton2" class="button is-info w3-hover-light-blue" matStepperNext disabled>Next</button>
+      <button class="button is-info w3-hover-light-blue mr-5" (click)="sendEvent(4, 2)" matStepperPrevious>Back</button>
+      <button id="nextButton2" (click)="sendEvent(3, 2)" class="button is-info w3-hover-light-blue" matStepperNext disabled>Next</button>
     </div>
   </mat-step>
   <mat-step>
@@ -63,7 +64,7 @@
       </table>
     </div>
     <div class="content m-5 p-5">
-      <button class="button is-info w3-hover-light-blue mr-5" matStepperPrevious>Back</button>
+      <button class="button is-info w3-hover-light-blue mr-5" (click)="sendEvent(4, 3)" matStepperPrevious>Back</button>
     </div>
   </mat-step>
 </mat-stepper>

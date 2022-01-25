@@ -1,0 +1,12 @@
+<article class="message is-info">
+    <div class="message-header">
+      <p>Medical Report</p>
+    </div>
+    <div class="message-body">
+      <p> Your anamnesis from this appointment: </p> <br>
+      <p> {{report.anamnesis}}</p>
+      <hr>
+      <p> Prescription: </p> <br>
+      <label style="display: block;" *ngFor="let medicine of report.prescription.split(';')">{{medicine}} <br> </label> 
+    </div>
+  </article>

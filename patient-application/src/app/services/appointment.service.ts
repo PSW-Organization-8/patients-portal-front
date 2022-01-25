@@ -22,6 +22,10 @@ import { Router } from '@angular/router';
       return this.http.put<any>(this._url + 'appointment/survey/' + this.currentAppointmentId, this.currentAppointmentId);
     }
 
+    public getMedicalReport(id: number){
+      return this.http.get<any>(this._url + 'appointment/medicalReport/' + id)
+    }
+
     public setCurrentAppointment(appointmentId: number){
       this.currentAppointmentId = appointmentId;
     }

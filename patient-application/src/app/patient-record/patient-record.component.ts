@@ -4,6 +4,8 @@ import { DoctorService } from '../services/doctor.service';
 import { AppointmentService } from '../services/appointment.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MedicalReportComponent } from '../medical-report/medical-report.component';
 
 @Component({
   selector: 'app-patient-record',
@@ -17,7 +19,8 @@ export class PatientRecordComponent implements OnInit {
   doctor: any;
   patient: any;
   patientUsername: any;
-  constructor(private _patientService:PatientService, private _doctorService:DoctorService, private _appointmentService:AppointmentService, private router:Router, private _loginService:LoginService) { }
+  medicalReport: any;
+  constructor(private _patientService:PatientService, private _doctorService:DoctorService, private _appointmentService:AppointmentService, private router:Router, private _loginService:LoginService, private detailsDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getLoggedUser();
@@ -37,7 +40,7 @@ export class PatientRecordComponent implements OnInit {
     this._patientService.getPatientByUsernameFromServer(username).subscribe(
       (successData: any) => {  this.patient = successData },
       () => {},
-      () => { this.getDoctor(this.patient.id), this.getPatientAllergens(this.patient.id), this.getAppointmets(this.patient.id) }
+      () => { this.getDoctor(this.patient.id), this.getPatientAllergens(this.patient.id), this.getAppointmets(this.patient.id)}
       );
   }
 
@@ -55,6 +58,12 @@ export class PatientRecordComponent implements OnInit {
 
   getAppointmets(id: number): void {
     this._patientService.getPatientAppointments(id).subscribe(ap => this.appointments = ap)
+  }
+
+  getMedicalReport(id: number): void{
+    this._appointmentService.getMedicalReport(id).subscribe(r => {this.medicalReport = r;
+      const dialogRef = this.detailsDialog.open(MedicalReportComponent, {data:this.medicalReport});
+    })
   }
 
   cancelAppointment(appointmentId: number): void{
