@@ -7,6 +7,6 @@
       <p> {{report.anamnesis}}</p>
       <hr>
       <p> Prescription: </p> <br>
-      <label *ngFor="let medicine of report.prescription.split(';')">{{medicine}} <br> </label> 
+      <label style="display: block;" *ngFor="let medicine of report.prescription.split(';')">{{medicine}} <br> </label> 
     </div>
   </article>
