@@ -1,0 +1,69 @@
+<mat-stepper linear #stepper>
+  <mat-step class="test" [editable]=true>
+    <ng-template matStepLabel><p class="label">Choose date</p></ng-template>
+    <div class="content m-5 p-5">
+      <input type="date" [min]="todayDate" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="setDate($event)"  name="startDate" required>
+    </div>
+    <div class="content m-5 p-5">
+      <button id="nextButton" class="button is-info w3-hover-light-blue mr-5" matStepperNext disabled>Next</button>
+    </div>
+  </mat-step>
+  <mat-step [editable]=true>
+    <ng-template matStepLabel><p class="label">Choose specialization</p></ng-template>
+    <div class="content m-5 p-5">
+      <select name="specializationSelect" (change)="showDoctors()" [(ngModel)]="selectedSpecialization" #specializationSelect="ngModel" required>
+        <option *ngFor="let s of specializations">
+            {{s.name}}
+        </option>
+      </select>
+    </div>
+    <div class="content m-5 p-5">
+      <button class="button is-info w3-hover-light-blue mr-5" matStepperPrevious>Back</button>
+      <button id="nextButton1" class="button is-info w3-hover-light-blue" matStepperNext disabled>Next</button>
+    </div>
+  </mat-step>
+  <mat-step [editable]=true>
+    <ng-template matStepLabel><p class="label">Choose doctor</p></ng-template>
+    <div class="content m-5 p-5"> 
+      <select name="doctorSelect" required [(ngModel)]="doctor" #doctorSelect="ngModel" (change)="showFreeTerms()"> 
+        <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}}</option>
+      </select>
+    </div>
+    <div class="content m-5 p-5">
+      <button class="button is-info w3-hover-light-blue mr-5" matStepperPrevious>Back</button>
+      <button id="nextButton2" class="button is-info w3-hover-light-blue" matStepperNext disabled>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel><p class="label">Choose term</p></ng-template>
+    <div class="content m-5 p-5">
+      <table style="width: 70%; justify-content: center;" class="table is-hoverable is-striped">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Hour</th>
+            <th style="width: 1.875rem;">Minute</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let term of terms">
+          <tr>
+            <td>{{term.slice(0,4)}}</td>
+            <td>{{term.slice(5,7)}}</td>
+            <td>{{term.slice(8,10)}}</td>
+            <td><b>{{term.slice(11,13)}}</b></td>
+            <td><b>{{term.slice(14,16)}}</b></td>
+            <td style="width: 1.875rem;">
+              <button class="button is-link" (click)="scheduleAppointment(term)">Schedule</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="content m-5 p-5">
+      <button class="button is-info w3-hover-light-blue mr-5" matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+</mat-stepper>

@@ -1,0 +1,24 @@
+.is-danger{
+    background-color: #efb0a1;
+}
+
+.is-link{
+    background-image: linear-gradient(to right, #50caa6 , #57dbb3) !important;
+}
+
+.is-primary{
+    background-image: linear-gradient(to right, #5688C7 , #a6c3e9) !important;
+}
+
+.tile{
+    box-shadow: 5 px 10 px #888888;
+}
+
+.is-success{
+    background-image: linear-gradient(to right, #a6c3e9 , #dae7f8) !important;
+}
+
+.ap-container{
+    height: 50 px;
+    overflow-y: auto;
+}

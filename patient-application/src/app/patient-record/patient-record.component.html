@@ -1,0 +1,34 @@
+<div class="tile is-ancestor m-5">
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child box notification is-primary">
+        <p class="title ml-5"> <img :src="data:image/png;base64,{{patient?.picture}}" width = "100px" heigth = "200"> {{patient?.fullName}} </p>
+        <p class="subtitle mt-5">Username: {{patient?.username}}</p>
+        <p class="subtitle">Date of Birth: {{patient?.dateOfBirth.slice(0, 10)}}</p>
+        <p class="subtitle">Current doctor: {{doctor?.fullName}}</p>
+    </div>
+    <div class="tile is-child box notification is-warning">
+        <p class="title">Contact Information</p>
+        <p class="subtitle mt-5">Mobile: {{patient?.contact.phone}}</p>
+        <p class="subtitle">E-mail: {{patient?.contact.email}}</p>
+    </div>
+    <div class="tile is-child box notification is-danger">
+        <p class="title">Allergies</p>
+        <label class="subtitle" *ngFor="let a of allergies"> {{a.name}} </label>
+        <p *ngIf="allergies?.length===0"> You have no alergies!</p>
+        <div class="content">
+        </div>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box notification is-success">
+          <div class="content ap-container" style="height: 700px;">
+            <p class="title has-text-centered">Appointments</p>
+            <div *ngFor="let ap of appointments">
+              <p class="subtitle m-1 is-primary has-text-centered box" *ngIf="ap.state===0"> Appointment incoming at: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}} <button id="cancelAppointmentButton" (click)="cancelAppointment(ap.id)" class="button is-rounded is-info is-small ml-1 w3-hover-white">Cancel</button></p> 
+              <p class="subtitle m-1 is-link has-text-centered box" *ngIf="ap.state===1"> Appointment completed: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}}<button (click)="setCurrentAppointment(ap.id)" *ngIf="!ap.isSurveyed" class="button is-rounded is-info is-small ml-2 mr-2 w3-hover-white">Survey</button> <label *ngIf="ap.isSurveyed"> Surveyed!</label></p> 
+              <p id="appointmentCanceledButton" class="subtitle m-1 is-danger has-text-centered box" *ngIf="ap.state===2"> Appointment at: {{ap.startTime.slice(0,10)}} {{ap.startTime.slice(11,16)}} Cancelled </p> 
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

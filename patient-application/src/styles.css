@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bulma/css/bulma.css";
+@import '~bulma-extensions';
+
+.is-primary {
+  background-color: #5688C7 !important;
+}
+
+.is-info{
+  background-color: #13293D !important;
+}
+
+.is-warning{
+  border-color: #EFB0A1 !important;
+}
+
+.is-color{
+  background-color: #EFB0A1 !important;
+  background-color: #EFB0A1 !important;
+}
+
+h1{
+  font-family: Raleway;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

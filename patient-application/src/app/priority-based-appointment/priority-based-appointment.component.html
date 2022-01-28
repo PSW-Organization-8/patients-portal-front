@@ -1,0 +1,66 @@
+<div class="columns is-mobile is-centered m-5">
+    <div class="column is-5 is-hcentered is-primary" style="height: 800px;">
+        <div class="field">
+            <label class="label">Doctors</label>
+            <div class="select">
+                <select name="doctorSelect" [(ngModel)]="doctor" (change)="getByPriority()">
+                    <option *ngFor="let d of doctors" [ngValue]="d">{{d.name}} {{d.lastName}} ({{getDoctorSpecialization(d.doctorSpecialization)}})</option>
+                </select>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">First date</label>
+            <div class="control">
+                <input  type="date" name="firstDate" [ngModel]="firstDate | date:'yyyy-MM-dd'" [min]="leastDate" (ngModelChange)="setFirstDate($event)" (change)="getByPriority()">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Last date</label>
+            <div class="control">
+                <input type="date" name="lastDate" [ngModel]="lastDate | date:'yyyy-MM-dd'" [min]="leastDate" (ngModelChange)="setLastDate($event)" (change)="getByPriority()">
+            </div>
+        </div>
+
+        <label class="label">Choose your piority:</label>
+        <div>
+            <input type="radio" id="doctorPriority" name="priority" checked [(ngModel)]="priority" [value]="true" (change)="getByPriority()">
+            <label for="doctorPriority">Doctor</label>
+                <input type="radio" id="datePriority" name="priority" [(ngModel)]="priority" [value]="false" (change)="getByPriority()">
+            <label for="datePriority">Date</label>
+        </div>
+    </div>
+    <div class="column is-5 ml-5 is-link" style="height: 800px;">
+        <label class="label" style="font-size: 24px;">Free terms</label>
+        <label class="label" style="font-size: 18px;" *ngIf="doctor != null">Specialization {{getDoctorSpecialization(doctor.doctorSpecialization)}}</label>
+        <div id="tableContainer">
+            <table class='table is-striped'>
+                <thead>
+                <tr style="text-align: center">
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Hour</th>
+                    <th>Minute</th>
+                </tr>
+                </thead>
+                <tbody class="is-striped" *ngFor="let term of freeTerms; let i = index">
+                <tr style="text-align: center">
+                    <td style="min-width: 150px; vertical-align: middle;">{{term.item3}}</td>
+                    <td style="min-width: 150px; vertical-align: middle;">{{term.item1.slice(8,10)}}-{{term.item1.slice(5,7)}}-{{term.item1.slice(0,4)}}</td>
+                    <td style="vertical-align: middle;">{{term.item1.slice(11,13)}}</td>
+                    <td style="vertical-align: middle;">{{term.item1.slice(14,16)}}</td>
+                    <td style="vertical-align: middle;">
+                        <label><input class="appointmentRadio" name="chooseTerm" type="radio" (click)="selectTerm(term.item1, i, term.item2)"><img class="appointmentImg" id="{{ 'appointmentImgId' + i }}" src="https://drive.google.com/uc?id=1QnEOft9ZNZH4_MM276w5v5gfo9eMKfwz"></label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control m-5">
+                <button class="button w3-black w3-hover-white" [disabled] (click)="createAppointment()">Schedule</button>
+            </div>
+        </div>
+    </div>
+</div>
